@@ -1,0 +1,34 @@
+#logo {
+	
+	height: 60px;
+	margin-top: 6px;
+	margin-left: 6px;
+}
+
+.header {
+	
+	height: 80px;
+	border-bottom: 2px dashed #1a1a1a;
+}
+
+@font-face {
+  font-family: 'alteHaas';
+  src: url(font-path('altehaasgroteskregular-webfont.eot') + "?#iefix") format('embedded-opentype'),
+       url(font-path('altehaasgroteskregular-webfont.woff')) format('woff'),
+       url(font-path('altehaasgroteskregular-webfont.ttf'))  format('truetype'),
+       url(font-path('altehaasgroteskregular-webfont.svg') + "#alteHaas") format('svg');
+}
+
+@font-face {
+  font-family: 'alteHaasBold';
+  src: url(font-path('altehaasgroteskbold-webfont.eot') + "?#iefix") format('embedded-opentype'),
+       url(font-path('altehaasgroteskbold-webfont.woff')) format('woff'),
+       url(font-path('altehaasgroteskbold-webfont.ttf'))  format('truetype'),
+       url(font-path('altehaasgroteskbold-webfont.svg') + "#alteHaasBold") format('svg');
+}
+
+html {
+	
+	font-family: alteHaas;
+	
+}

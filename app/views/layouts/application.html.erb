@@ -5,10 +5,33 @@
   <%= stylesheet_link_tag    "application", :media => "all" %>
   <%= javascript_include_tag "application" %>
   <%= csrf_meta_tags %>
+	<%= render 'layouts/shim'%>
+	
 </head>
 <body>
 
-<%= yield %>
 
+		<% if !current_page?(:controller => 'static_pages', :action => 'splash') %>
+			<%= render 'layouts/header'%>
+		<% end %>
+		
+    <div class="container">
+      <%= yield %>
+	  </div>
+		<%= render 'layouts/footer'%>
+	
 </body>
 </html>
+
+<!--
+	 <header class="navbar navbar-fixed-top">
+      <div class="navbar-inner">
+        <div class="container">
+    					<nav>
+            <ul class="nav pull-right">
+            </ul>
+          </nav>
+        </div>
+      </div>
+    </header>
+-->

@@ -9,4 +9,5 @@ module ApplicationHelper
       "#{page_title}.#{base_title}"                 # String interpolation
     end
   end
+  
 end

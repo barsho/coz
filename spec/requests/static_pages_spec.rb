@@ -3,16 +3,13 @@ require 'spec_helper'
 describe "Static pages" do
 
   describe "Splash page" do
+    
+    subject { page }
+    before { visit root_path } 
 
-    it "should have the content 'coz'" do
-      visit '/static_pages/splash'
-      page.should have_content('coz')
-    end
-    it "should have the title 'selam'" do
-      visit '/static_pages/splash'
-      page.should have_selector('title',
-                        :text => "selam.coz")
-    end
+    it { should have_selector('img', id: 'splashLogo') }
+    it { should have_selector('title', text: full_title(''))}
+  
   end
 
 end

@@ -2,7 +2,9 @@ Coz::Application.routes.draw do
 
   root :to => 'static_pages#splash'
 
-  get "static_pages/splash"
+  match 'splash', to: 'static_pages#splash'
+  match '/signup',  to: 'users#new'
+
 
   # The priority is based upon order of creation:
   # first created -> highest priority.

@@ -1,4 +1,11 @@
 <% provide(:title, 'selam') %>
 
-<h1>coz</h1>
-<p>Find me in app/views/static_pages/splash.html.erb</p>
+<div id="splashLogoContainer">
+	<%= link_to image_tag("splashLogo.png", alt: "coz", id: "splashLogo"), root_path %>
+</div>
+
+<div id="splashNav">
+      <div class="textButton"><%= link_to "signup", signup_path %></div>
+      <div class="textButton caption">/</div>
+      <div class="textButton"><%= link_to "login", '#' %></div>
+</div>
