@@ -1,4 +1,10 @@
 Coz::Application.routes.draw do
+
+  root :to => 'static_pages#splash'
+
+  get "static_pages/splash"
+  get "static_pages/404"
+
   # The priority is based upon order of creation:
   # first created -> highest priority.
 
