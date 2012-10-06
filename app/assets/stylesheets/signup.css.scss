@@ -1,0 +1,154 @@
+#logoSingUp {
+	margin-top: 20px;
+	margin-bottom: 50px;
+	height: 140px;
+	display: inline;
+}
+
+#formFrame {
+	
+	position: absolute;
+	text-align: center;
+	
+	height: 700px;
+	width: 700px;
+	
+	top:0;
+	bottom: 0;
+	left: 0;
+	right: 0;
+	
+	margin: auto;
+
+	
+	form {
+		letter-spacing: 0px;
+		word-spacing: 0px;
+	}
+	
+	input {
+	
+		position: relative;
+	
+		width: 700px;
+		height: 80px;
+		border: 0px;
+		
+		padding: 0px;
+		margin: 0;
+		
+		margin-bottom: 40px;
+		
+		-webkit-border-radius: 20px;
+		-moz-border-radius: 20px;
+		border-radius: 20px;
+		
+		border: 1px dashed #343434;
+		
+		-webkit-box-shadow: 0px 1px 1px 0px #dedede, inset 2px 2px 3px 0px #bbbbbb;
+	  -moz-box-shadow: 0px 1px 1px 0px #dedede, inset 2px 2px 3px 0px #bbbbbb;
+	  box-shadow: 0px 1px 1px 0px #dedede, inset 2px 2px 3px 0px #bbbbbb;
+
+		&:focus {
+
+			-webkit-box-shadow: 0px 1px 1px 0px #999999, inset 2px 2px 3px 0px #888888;
+		  -moz-box-shadow: 0px 1px 1px 0px #999999, inset 2px 2px 3px 0px #888888;
+		  box-shadow: 0px 1px 1px 0px #999999, inset 2px 2px 3px 0px #888888;
+			border: 1px solid #232323;
+		}
+		
+		&:hover {
+			
+			border: 1px solid #343434;			
+			
+		}
+	}
+		
+	#user_lastname {
+		
+		width: 346px;
+		float: right;
+		display: inline;
+		
+		-webkit-border-top-left-radius: 0px;
+		-moz-border-top-left-radius: 0px;
+		border-top-left-radius: 0px;
+		
+		-webkit-border-bottom-left-radius: 0px;
+		-moz-border-bottom-left-radius: 0px;
+		border-bottom-left-radius: 0px;
+		
+		border-left: 1px dashed #9a9a9a;
+		
+		-webkit-box-shadow: 0px 1px 1px 0px #dedede, inset 0px 2px 3px 0px #bbbbbb;
+	  -moz-box-shadow: 0px 1px 1px 0px #dedede, inset 0px 2px 3px 0px #bbbbbb;
+	  box-shadow: 0px 1px 1px 0px #dedede, inset 0px 2px 3px 0px #bbbbbb;
+		
+		&:focus {
+
+			-webkit-box-shadow: 0px 1px 1px 0px #999999, inset 0px 2px 3px 0px #888888;
+		  -moz-box-shadow: 0px 1px 1px 0px #999999, inset 0px 2px 3px 0px #888888;
+		  box-shadow: 0px 1px 1px 0px #999999, inset 0px 2px 3px 0px #888888;
+			border: 1px solid #232323;
+		}
+	}
+
+	#user_firstname {
+		
+		border-right: 1px dashed #9a9a9a;		
+		
+		width: 346px;
+		float: left;
+		display: inline;
+		
+		-webkit-border-top-right-radius: 0px;
+		-moz-border-top-right-radius: 0px;
+		border-top-right-radius: 0px;
+		
+		-webkit-border-bottom-right-radius: 0px;
+		-moz-border-bottom-right-radius: 0px;
+		border-bottom-right-radius: 0px;
+		
+		&:focus {
+			border: 1px solid #232323;	
+		}
+		
+	}
+
+	#submitSignUp {
+			width: 175px;
+			float: right;
+			display: inline;
+		
+			background-color: #221f1f;
+			color: #FDFDFD;
+			-webkit-box-shadow: none;
+		  -moz-box-shadow: none;
+		  box-shadow: none;
+			
+			&:hover {
+				
+			}
+			
+	}
+
+	#agreementButton {
+			width: 488px;
+			height: 80px;
+			float: left;
+			display: inline;
+			
+			background:url(data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAAQAAAAECAYAAACp8Z5+AAAAIklEQVQIW2NkQALt7e3/GWF8EKeyspIRLADjgNiMyByQAADDJw6ZeCveBQAAAABJRU5ErkJggg==) repeat;	
+			-webkit-border-radius: 20px;
+			-moz-border-radius: 20px;
+			border-radius: 20px;
+			
+			&:hover {
+				background-color: #efefef;
+			}
+
+			
+	}
+
+}
+

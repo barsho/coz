@@ -12,6 +12,8 @@
 
 
 		<% if !current_page?(:controller => 'static_pages', :action => 'splash') %>
+		<% elsif !current_page?(:controller => 'users', :action => 'new') %>
+		<% else %>
 			<%= render 'layouts/header'%>
 		<% end %>
 		

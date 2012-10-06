@@ -1,22 +1,25 @@
 <% provide(:title, 'signup') %>
 
-<h1>Sign up</h1>
 
-<div class="row">
-  <div class="span6 offset3">
-    <%= form_for(@user) do |f| %>
-      <%= render 'shared/error_messages' %>
+<div id="formFrame">
+	
+			<%= image_tag("logo.png", alt: "coz", id: "logoSingUp") %>
 
-      <%= f.label :name %>
-      <%= f.text_field :name %>
+	    <%= form_for(@user) do |f| %>
+	
+	      <%= render 'shared/error_messages' %>
 
-      <%= f.label :email %>
-      <%= f.text_field :email %>
+	      <%= f.text_field :firstname %>
 
-      <%= f.label :password %>
-      <%= f.password_field :password %>
+	      <%= f.text_field :lastname %>
 
-      <%= f.submit "Create my account", class: "btn btn-large btn-primary" %>
-    <% end %> 
-  </div>
-</div>
+	      <%= f.text_field :email %>
+
+	      <%= f.password_field :password %>
+				
+				<div id="agreementButton">I agree to the mfn conditions</div>
+				
+	      <%= f.submit "sign up", {  id: "submitSignUp" } %> 
+	    <% end %> 
+
+</div>	
