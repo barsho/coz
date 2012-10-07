@@ -11,8 +11,9 @@
 <body>
 
 
-		<% if !current_page?(:controller => 'static_pages', :action => 'splash') %>
-		<% elsif !current_page?(:controller => 'users', :action => 'new') %>
+		<% if current_page?(:controller => 'static_pages', :action => 'splash') %>
+		<% elsif current_page?(:controller => 'users', :action => 'new') %>
+		<% elsif current_page?('/signup') %>
 		<% else %>
 			<%= render 'layouts/header'%>
 		<% end %>
