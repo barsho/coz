@@ -2,24 +2,23 @@
 
 
 <div id="formFrame">
-	
-			<%= image_tag("logo.png", alt: "coz", id: "logoSingUp") %>
+	  	<%= link_to image_tag("logo.png", alt: "coz", id: "logoSingUp"), root_path %>
 
 	    <%= form_for(@user) do |f| %>
 	
 	      <%= render 'shared/error_messages' %>
 
-	      <%= f.text_field :firstname %>
+	      <%= f.text_field :firstname, :placeholder => "first" %>
 
-	      <%= f.text_field :lastname %>
+	      <%= f.text_field :lastname, :placeholder => "last" %>
 
-	      <%= f.text_field :email %>
+	      <%= f.text_field :email, :placeholder => "email" %>
 
-	      <%= f.password_field :password %>
+	      <%= f.password_field :password, :placeholder => "password" %>
 				
-				<div id="agreementButton">I agree to the mfn conditions</div>
+				<div id="agreementButton"></div>
 				
-	      <%= f.submit "sign up", {  id: "submitSignUp" } %> 
+	      <%= f.submit "signup", {  id: "submitSignUp" } %> 
 	    <% end %> 
 
 </div>	

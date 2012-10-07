@@ -6,13 +6,16 @@
 	display: inline;
 }
 
+
 #formFrame {
 	
 	position: absolute;
 	text-align: center;
 	
-	height: 600px;
-	width: 600px;
+	height: 602px;
+	width: 602px;
+	
+	padding: 1px;
 	
 	top:0;
 	bottom: 0;
@@ -21,7 +24,7 @@
 	
 	margin: auto;
 	
-	overflow-y: scroll;
+
 
 	form {
 		letter-spacing: 0px;
@@ -29,14 +32,23 @@
 	}
 	
 	input {
-	
 		position: relative;
 	
-		width: 600px;
-		height: 70px;
+		width: 560px;
+		height: 66px;
 		border: 0px;
 		
+		&::-webkit-input-placeholder {
+		 	line-height: 1.2;
+		}
+		
 		padding: 0px;
+		padding-left: 20px;
+		padding-right: 20px;
+		padding-bottom: 4px;
+		font-size: 35px;
+
+
 		margin: 0;
 		
 		margin-bottom: 35px;
@@ -64,11 +76,13 @@
 			border: 1px solid #343434;			
 			
 		}
+		
+	
 	}
 		
 	#user_lastname {
 		
-		width: 296px;
+		width: 256px;
 		float: right;
 		display: inline;
 		
@@ -99,7 +113,7 @@
 		
 		border-right: 1px dashed #9a9a9a;		
 		
-		width: 296px;
+		width: 256px;
 		float: left;
 		display: inline;
 		
@@ -121,6 +135,13 @@
 			width: 155px;
 			float: right;
 			display: inline;
+			
+			
+			font-weight: bold;
+			color: #454545;
+			
+			height: 70px;
+			padding-bottom: 8px;
 		
 
 			-webkit-box-shadow: none;
@@ -129,14 +150,16 @@
 			border: 1px solid #676767;
 			background-color: #f9f9f9;
 
-
-
 			-webkit-box-shadow: 1px 1px 3px 0px #999999, inset -1px -2px 2px 0px #bfbfbf, inset 2px 2px 2px 0px #ebebeb;
 		  -moz-box-shadow: 1px 1px 3px 0px #999999, inset -1px -2px 2px 0px #bfbfbf, inset 2px 2px 2px 0px #ebebeb;
 		  box-shadow: 1px 1px 3px 0px #999999, inset -1px -2px 2px 0px #bfbfbf, inset 2px 2px 2px 0px #ebebeb;
 
 
 			&:hover {
+				
+				font-weight: bolder;
+				color: #221f1f;
+				
 				border: 1px solid #343434;	
 				
 				-webkit-box-shadow: 0px 1px 1px 0px #bbbbbb, inset -1px -2px 2px 0px #dddddd, inset 1px 2px 2px 0px #999999;
@@ -153,14 +176,14 @@
 			float: left;
 			display: inline;
 			
-			background:url(data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAAQAAAAECAYAAACp8Z5+AAAAIklEQVQIW2NkQALt7e3/GWF8EKeyspIRLADjgNiMyByQAADDJw6ZeCveBQAAAABJRU5ErkJggg==) repeat;	
-			-webkit-border-radius: 20px;
+				-webkit-border-radius: 20px;
 			-moz-border-radius: 20px;
 			border-radius: 20px;
 			border: 1px dotted #fdfdfd;		
 			
 			&:hover {
-				background-color: #f3fbf3;	
+	
+						background:url(data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAAQAAAAECAYAAACp8Z5+AAAAIklEQVQIW2NkQALt7e3/GWF8EKeyspIRLADjgNiMyByQAADDJw6ZeCveBQAAAABJRU5ErkJggg==) repeat;	
 
 			}
 
