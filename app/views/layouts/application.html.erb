@@ -10,14 +10,16 @@
 </head>
 <body>
 
-	<!--
+	
 		<% if current_page?(:controller => 'static_pages', :action => 'splash') %>
 		<% elsif current_page?(:controller => 'users', :action => 'new') %>
 		<% elsif current_page?('/signup') %>
+		<% elsif current_page?(:controller => 'sessions', :action => 'new') %>
+		<% elsif current_page?('/signin') %>
 		<% else %>
 			<%= render 'layouts/header'%>
 		<% end %>
-	-->
+	
     <div class="container">
 			<% flash.each do |key, value| %>
 				<div class="alert alert-<%= key %>"><%= value %></div>
