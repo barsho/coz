@@ -45,3 +45,13 @@ body {
 	min-height: 610px;
 	overflow-y: scroll;
 }
+
+.field_with_errors input{
+	background-color: #fff2f2;
+	
+	&:focus {
+		background-color: #fdfdfd;
+	}
+}
+
+
