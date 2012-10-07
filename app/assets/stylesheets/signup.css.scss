@@ -20,6 +20,8 @@
 	right: 0;
 	
 	margin: auto;
+	
+	overflow-y: scroll;
 
 	form {
 		letter-spacing: 0px;
@@ -120,14 +122,27 @@
 			float: right;
 			display: inline;
 		
-			background-color: #221f1f;
-			color: #FDFDFD;
+
 			-webkit-box-shadow: none;
 		  -moz-box-shadow: none;
 		  box-shadow: none;
-			
+			border: 1px solid #676767;
+			background-color: #f9f9f9;
+
+
+
+			-webkit-box-shadow: 1px 1px 3px 0px #999999, inset -1px -2px 2px 0px #bfbfbf, inset 2px 2px 2px 0px #ebebeb;
+		  -moz-box-shadow: 1px 1px 3px 0px #999999, inset -1px -2px 2px 0px #bfbfbf, inset 2px 2px 2px 0px #ebebeb;
+		  box-shadow: 1px 1px 3px 0px #999999, inset -1px -2px 2px 0px #bfbfbf, inset 2px 2px 2px 0px #ebebeb;
+
+
 			&:hover {
+				border: 1px solid #343434;	
 				
+				-webkit-box-shadow: 0px 1px 1px 0px #bbbbbb, inset -1px -2px 2px 0px #dddddd, inset 1px 2px 2px 0px #999999;
+			  -moz-box-shadow: 0px 1px 1px 0px #bbbbbb, inset -1px -2px 2px 0px #dddddd, inset 1px 2px 2px 0px #999999;
+			  box-shadow: 0px 1px 1px 0px #bbbbbb, inset -1px -2px 2px 0px #dddddd, inset 1px 2px 2px 0px #999999;
+	
 			}
 			
 	}
@@ -142,12 +157,14 @@
 			-webkit-border-radius: 20px;
 			-moz-border-radius: 20px;
 			border-radius: 20px;
+			border: 1px dotted #fdfdfd;		
 			
 			&:hover {
-				background-color: #efefef;
+				background-color: #f3fbf3;	
+
 			}
 
-			
+
 	}
 
 }
