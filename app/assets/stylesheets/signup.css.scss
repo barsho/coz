@@ -44,6 +44,7 @@
 		
 		&::-webkit-input-placeholder {
 		 	line-height: 1.2;
+			text-shadow: 0 1px 1px #999999;
 		}
 		
 		padding: 0px;
@@ -51,6 +52,7 @@
 		padding-right: 20px;
 		padding-bottom: 4px;
 		font-size: 35px;
+		text-shadow: 0 1px 1px #999999;
 
 
 		margin: 0;
@@ -146,7 +148,7 @@
 			
 			height: 70px;
 			padding-bottom: 8px;
-		
+			text-shadow: 0 1px 1px #999999;
 
 			-webkit-box-shadow: none;
 		  -moz-box-shadow: none;

@@ -1,11 +1,14 @@
-<% provide(:title, 'selam') %>
+<% provide(:title, 'hello') %>
 
-<div id="splashLogoContainer">
-	<%= link_to image_tag("splashLogo.png", alt: "coz", id: "splashLogo"), root_path %>
-</div>
 
-<div id="splashNav">
-      <div class="textButton"><%= link_to "signup", signup_path %></div>
-      <div class="textButton caption">/</div>
-      <div class="textButton"><%= link_to "login", '#' %></div>
+<div id="formFrame">
+	  	<%= image_tag("logo.png", alt: "coz", id: "logoSingUp")%>
+
+
+			<div id="splashNav">
+			      <div class="textButton"><%= link_to "signup", signup_path %></div>
+			      <div class="textButton caption">/</div>
+			      <div class="textButton"><%= link_to "login", signin_path %></div>
+			</div>		  
+    
 </div>

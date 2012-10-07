@@ -18,7 +18,7 @@ describe "UserPages" do
 #    it { should have_selector('div',    text: 'signup') }
     it { should have_selector('title', text: full_title('signup')) }
   
-    let(:submit) { "Create my account" }
+    let(:submit) { "signup" }
 
     describe "with invalid information" do
       it "should not create a user" do
@@ -28,10 +28,10 @@ describe "UserPages" do
 
     describe "with valid information" do
       before do
-        fill_in "firstname",         with: "Example"
-        fill_in "lastname",         with: "User"
-        fill_in "email",        with: "user@example.com"
-        fill_in "password",     with: "foobar"
+        fill_in "user_firstname",         with: "Example"
+        fill_in "user_lastname",         with: "User"
+        fill_in "user_email",        with: "user@example.com"
+        fill_in "user_password",     with: "foobar"
       end
 
       it "should create a user" do

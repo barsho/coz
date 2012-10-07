@@ -1,0 +1,25 @@
+<% provide(:title, "login") %>
+
+<div id="formFrame">
+	  	<%= link_to image_tag("logo.png", alt: "coz", id: "logoSingUp"), root_path %>
+
+		  <%= form_for(:session, url: sessions_path) do |f| %>
+
+	      <%= f.text_field :email, :placeholder => "email" %>
+
+	      <%= f.password_field :password, :placeholder => "password" %>
+				 
+
+				
+				<div id="agreementButton"></div>
+				
+	      <%= f.submit "login", {  id: "submitSignUp" } %> 
+	
+	    <% end %> 
+
+    
+</div>	
+
+<!--
+<p>New user? <%= link_to "Sign up now!", signup_path %></p>
+-->
