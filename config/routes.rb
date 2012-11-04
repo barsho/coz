@@ -1,10 +1,19 @@
 Coz::Application.routes.draw do
+
+  resources :projects
   resources :users
+  resources :themes
+
+  resources :conversations, only: [:create, :destroy]
+  resources :posts
+
   resources :sessions, only: [:new, :create, :destroy]
 
   root :to => 'static_pages#splash'
 
-  match 'splash', to: 'static_pages#splash'
+  match '/newproject',  to: 'projects#new'
+
+  match '/splash', to: 'static_pages#splash'
   match '/signup',  to: 'users#new'
   match '/signin',  to: 'sessions#new'
   match '/signout', to: 'sessions#destroy', via: :delete

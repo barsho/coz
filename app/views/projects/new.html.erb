@@ -1,0 +1,21 @@
+<% provide(:title, 'project') %>
+
+
+<div id="formFrame">
+	  	<%= link_to image_tag("logo.png", alt: "coz", id: "logoSignUp"), root_path %>
+
+	    <%= form_for(@project) do |f| %>
+
+	      <%= f.text_field :name, :placeholder => "first" %>
+
+				<%= render 'shared/error_messages', object: f.object %>
+				
+				<div id="agreementButton"></div>
+				
+	      <%= f.submit "create", {  id: "submitSignUp" } %> 
+	
+	    <% end %> 
+
+
+    
+</div>

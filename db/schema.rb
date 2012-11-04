@@ -11,7 +11,36 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20121007104049) do
+ActiveRecord::Schema.define(:version => 20121025020658) do
+
+  create_table "conversations", :force => true do |t|
+    t.string   "title"
+    t.integer  "conversationable_id"
+    t.string   "conversationable_type"
+    t.datetime "created_at",            :null => false
+    t.datetime "updated_at",            :null => false
+  end
+
+  add_index "conversations", ["conversationable_id", "created_at"], :name => "index_conversations_on_conversationable_id_and_created_at"
+
+  create_table "posts", :force => true do |t|
+    t.string   "content"
+    t.integer  "user_id"
+    t.integer  "conversation_id"
+    t.datetime "created_at",      :null => false
+    t.datetime "updated_at",      :null => false
+  end
+
+  add_index "posts", ["user_id", "conversation_id", "created_at"], :name => "index_posts_on_user_id_and_conversation_id_and_created_at"
+
+  create_table "projects", :force => true do |t|
+    t.string   "name"
+    t.integer  "user_id"
+    t.datetime "created_at", :null => false
+    t.datetime "updated_at", :null => false
+  end
+
+  add_index "projects", ["user_id", "created_at"], :name => "index_projects_on_user_id_and_created_at"
 
   create_table "users", :force => true do |t|
     t.string   "email"

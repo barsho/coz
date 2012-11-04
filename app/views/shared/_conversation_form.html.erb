@@ -1,0 +1,8 @@
+<%= form_for(@conversation) do |f| %>
+  <%= render 'shared/error_messages', object: f.object %>
+  <div class="field">
+    <%= f.text_area :title, placeholder: "Compose new tread..." %>
+  </div>
+	<%= f.hidden_field :conversationable_id unless @conversation.conversationable_id.nil? %>
+	<%= f.submit "Post", class: "btn btn-large btn-primary" %>
+<% end %>

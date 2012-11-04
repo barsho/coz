@@ -1,0 +1,20 @@
+
+
+<% provide(:title, "p" + @project.id.to_s()) %>
+
+<%= @project.name %>
+
+<%= link_to "remove", @project, method: :delete,
+                                  data: { confirm: "You sure?" } %>
+
+<%= @project.conversations.any? %>
+<%= @project.conversations.count %>
+
+<% if signed_in? %>
+  <%= render 'shared/conversation_form' %>
+
+<% else %>
+	signupyo
+<% end %>
+
+<%= render 'shared/conversation_feed' %>

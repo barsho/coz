@@ -9,4 +9,20 @@ FactoryGirl.define do
       admin true
     end
   end
+  
+  factory :project do
+    name "Lorem ipsum"
+    user
+  end
+
+  factory :conversation do
+    title "Sample convo"
+    association :conversationable, factory: :project
+  end
+
+  factory :post do
+    content "Sample post"
+    conversation
+  end
+
 end

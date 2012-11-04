@@ -12,7 +12,7 @@ describe "UserPages" do
       visit users_path
     end
 
-    it { should have_selector('title', text: 'All users') }
+    it { should have_selector('title', text: 'people') }
     it { should have_selector('h1',    text: 'All users') }
 
     describe "pagination" do
@@ -52,10 +52,19 @@ describe "UserPages" do
   
   describe "profile page" do
     let(:user) { FactoryGirl.create(:user) }
+    let!(:p1) { FactoryGirl.create(:project, user: user, name: "Foo") }
+    let!(:p2) { FactoryGirl.create(:project, user: user, name: "Bar") }    
+    
     before { visit user_path(user) }
 
     it { should have_selector('h1',    text: user.firstname) }
     it { should have_selector('title', text: user.firstname) }
+    
+    describe "projects" do
+      it { should have_content(p1.name) }
+      it { should have_content(p2.name) }
+      it { should have_content(user.projects.count) }
+    end
   end
   
   describe "signup page" do

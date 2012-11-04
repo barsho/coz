@@ -1,0 +1,20 @@
+<div class="conversation" id="<%= conversation.id %>">
+	<%= conversation.title %>
+	
+	<% if current_user?(conversation.conversationable.user) %>
+    <%= link_to "delete", conversation, method: :delete,
+                                     data: { confirm: "You sure?" },
+                                     title: conversation.title %>
+  <% end %>
+
+	<%= conversation.posts.any? %>
+	<%= conversation.posts.count %>
+
+	<% if conversation.posts.any? %>
+	    Posts (<%= conversation.posts.count %>)
+
+	    <%= render conversation.posts %>
+
+	<% end %>
+
+</div>

@@ -1,0 +1,16 @@
+.conversation {
+	
+	position: relative;
+	overflow: auto;
+	overflow-y: hidden;
+	-ms-overflow-y: hidden;
+	white-space: nowrap;
+
+	margin-top: 20px;	
+	
+	height: 240px;
+	width: 100%;
+	
+	background-color: #cccccc;
+	
+}
