@@ -3,7 +3,9 @@ class Conversation < ActiveRecord::Base
   
   belongs_to :conversationable, polymorphic: true
   
-  has_many :posts 
+  belongs_to :parent_post, :class_name => 'Post', :foreign_key => 'relative_id'
+  
+  has_many :posts
   has_many :users, :through => :posts
   
   validates :conversationable_id, presence: true
@@ -12,3 +14,4 @@ class Conversation < ActiveRecord::Base
   default_scope order: 'conversations.created_at DESC'
   
 end
+

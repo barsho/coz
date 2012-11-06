@@ -3,9 +3,10 @@
 <% provide(:title, "p" + @project.id.to_s()) %>
 
 <%= @project.name %>
-
-<%= link_to "remove", @project, method: :delete,
+<% if current_user?(@project.user) %>
+	<%= link_to "remove", @project, method: :delete,
                                   data: { confirm: "You sure?" } %>
+<% end %>
 
 <%= @project.conversations.any? %>
 <%= @project.conversations.count %>

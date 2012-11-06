@@ -2,13 +2,17 @@
 	<%= conversation.title %>
 	
 	<% if current_user?(conversation.conversationable.user) %>
-    <%= link_to "delete", conversation, method: :delete,
+    <%= link_to "remove", conversation, method: :delete,
                                      data: { confirm: "You sure?" },
                                      title: conversation.title %>
   <% end %>
 
 	<%= conversation.posts.any? %>
 	<%= conversation.posts.count %>
+
+
+	<%= render 'shared/post_form', conversation: conversation %>
+
 
 	<% if conversation.posts.any? %>
 	    Posts (<%= conversation.posts.count %>)

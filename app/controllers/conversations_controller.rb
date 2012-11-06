@@ -19,7 +19,6 @@ class ConversationsController < ApplicationController
 
 
   def destroy
-    @project = @conversation.conversationable
     @conversation.destroy
     flash[:success] = "Conversation deleted!"
     redirect_to project_path(@project)
@@ -29,7 +28,8 @@ class ConversationsController < ApplicationController
 
     def correct_user
       @conversation = Conversation.find_by_id(params[:id])
-      redirect_to root_url if @conversation.nil?
+      @project = @conversation.conversationable
+      redirect_to project_path(@project) if @conversation.nil?
     end
 
 end

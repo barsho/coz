@@ -5,7 +5,7 @@ Coz::Application.routes.draw do
   resources :themes
 
   resources :conversations, only: [:create, :destroy]
-  resources :posts
+  resources :posts, only: [:create, :destroy]
 
   resources :sessions, only: [:new, :create, :destroy]
 

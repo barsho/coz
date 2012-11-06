@@ -23,6 +23,7 @@ FactoryGirl.define do
   factory :post do
     content "Sample post"
     conversation
+    user
   end
 
 end

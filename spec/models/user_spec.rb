@@ -13,8 +13,13 @@ require 'spec_helper'
 
 describe User do
 
-  before { @user = User.new(firstname: "Example", lastname: "User", email: "user@example.com", 
-                            password: "foobar") }
+
+
+
+  before { 
+    @user = User.new(firstname: "Example", lastname: "User", email: "user@example.com", 
+                            password: "foobar")   
+  }
 
   subject { @user }
 
@@ -31,9 +36,40 @@ describe User do
   it { should respond_to(:authenticate) }
   it { should respond_to(:projects) }
   it { should respond_to(:conversations) }
-
+  it { should respond_to(:conversation) }
+  it { should respond_to(:posts) }
+    
   it { should be_valid }
   it { should_not be_admin }
+  
+  describe "post associations" do
+
+    before { 
+      @user.save
+      @project = @user.projects.create(name: "hello")
+      @conversation = @project.conversations.create( title: "yallo")
+    }
+    
+    let!(:older_post) do 
+      FactoryGirl.create(:post, user: @user, conversation: @conversation, created_at: 1.day.ago)
+    end
+    let!(:newer_post) do
+      FactoryGirl.create(:post, user: @user, conversation: @conversation, created_at: 1.hour.ago)
+    end
+
+    it "should have the right microposts in the right order" do
+      @user.posts.should == [newer_post, older_post]
+    end
+    
+    it "should destroy associated microposts" do
+      posts = @user.posts.dup
+      @user.destroy
+      posts.should_not be_empty
+      posts.each do |post|
+        Post.find_by_id(post.id).should be_nil
+      end
+    end
+  end
 
   describe "with admin attribute set to 'true'" do
     before do

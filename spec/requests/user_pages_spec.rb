@@ -54,8 +54,14 @@ describe "UserPages" do
     let(:user) { FactoryGirl.create(:user) }
     let!(:p1) { FactoryGirl.create(:project, user: user, name: "Foo") }
     let!(:p2) { FactoryGirl.create(:project, user: user, name: "Bar") }    
-    
-    before { visit user_path(user) }
+
+    let!(:c1) { p1.conversations.create(title: "Loo Loo") }
+
+    let!(:post1) { user.posts.create( conversation: c1, content: "baaa") }
+    let!(:post2) { user.posts.create( conversation: c1, content: "baaa2") }
+        
+    before {  sign_in user
+              visit user_path(user) }
 
     it { should have_selector('h1',    text: user.firstname) }
     it { should have_selector('title', text: user.firstname) }
@@ -64,6 +70,12 @@ describe "UserPages" do
       it { should have_content(p1.name) }
       it { should have_content(p2.name) }
       it { should have_content(user.projects.count) }
+    end
+    
+    describe "posts" do
+      it { should have_content(post1.content) }
+      it { should have_content(post2.content) }
+      it { should have_content(user.posts.count) }
     end
   end
   

@@ -13,7 +13,7 @@ class User < ActiveRecord::Base
   attr_accessible :email, :firstname, :lastname, :password
   has_secure_password  
   has_many :projects 
-  has_many :posts
+  has_many :posts, dependent: :destroy
   has_many :conversations, :through => :posts 
   has_one :conversation, :as => :conversationable, dependent: :destroy
   

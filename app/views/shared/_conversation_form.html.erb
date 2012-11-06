@@ -4,5 +4,5 @@
     <%= f.text_area :title, placeholder: "Compose new tread..." %>
   </div>
 	<%= f.hidden_field :conversationable_id unless @conversation.conversationable_id.nil? %>
-	<%= f.submit "Post", class: "btn btn-large btn-primary" %>
+	<%= f.submit "Create", class: "btn btn-large btn-primary" %>
 <% end %>
