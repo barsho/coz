@@ -1,12 +1,10 @@
-<div class="fieldFrame">
+<div class="right_bullet_symbol"></div>
 
-	<%= form_for(@post) do |f| %>
-	  <%= render 'shared/error_messages', object: f.object %>
-	  <div class="field">
-	    <%= f.text_area :content, placeholder: "Compose new post..." %>
-	  </div>
-		<%= f.hidden_field :conversation_id, :value => conversation.id  %>
-		<%= f.submit "Post", class: "btn btn-large btn-primary" %>
-	<% end %>
+<%= form_for(@post) do |f| %>
+  <%= render 'shared/error_messages', object: f.object %>
+	<%= f.submit "Post", :id => "submitPost" %>
+  <%= f.text_field :content, :id => "post_field", placeholder: "Compose new post..." %>
+	<%= f.hidden_field :conversation_id, :value => conversation.id  %>
+<% end %>
 
-</div>
+

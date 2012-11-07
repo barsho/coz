@@ -1,12 +1,15 @@
+@import "variables";
+
 .post {
 	
 	display: inline-block;
+	white-space: wrap;
 	
 
-	margin: 20px;
+	margin: 2 * $unit - 2;
 	
-	height: 200px;
-	width: 200px;
+	height: 20 * $unit;
+	width: 20 * $unit;
 	
 	border: 1px solid #000000;
 	
@@ -18,22 +21,8 @@
 	position: relative;
 	float: left;
 	
-	width: 200px;
+	width: 20 * $unit;
 	height: 100%;
 }
 
-.field {
-	
 
-	
-	width: 200px;
-	height: 100px;
-	
-}
-
-textarea {
-	
-	width: 200px;
-	height: 100px;
-	
-}

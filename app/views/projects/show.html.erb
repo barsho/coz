@@ -2,20 +2,23 @@
 
 <% provide(:title, "p" + @project.id.to_s()) %>
 
-<%= @project.name %>
-<% if current_user?(@project.user) %>
-	<%= link_to "remove", @project, method: :delete,
-                                  data: { confirm: "You sure?" } %>
-<% end %>
+<div class="project_header">
 
-<%= @project.conversations.any? %>
-<%= @project.conversations.count %>
+	<div class="bullet_symbol"><%= @project.id.to_s() %></div>
 
-<% if signed_in? %>
-  <%= render 'shared/conversation_form' %>
+	<div class="project_label" >
+		<%= @project.name %>
+		<%= @project.conversations.any? %>
+		<%= @project.conversations.count %>
+		<% if current_user?(@project.user) %>
+			<%= link_to "remove", @project, method: :delete,
+		                                  data: { confirm: "You sure?" } %>
+		<% end %>
+	</div>
 
-<% else %>
-	signupyo
-<% end %>
+	<% if signed_in? %>
+	  <%= render 'shared/conversation_form' %>
+	<% end %>
+</div>
 
 <%= render 'shared/conversation_feed' %>

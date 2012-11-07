@@ -1,16 +1,203 @@
+@import "variables";
+
+
 .conversation {
 	
 	position: relative;
+	overflow-x: hidden;
+	overflow-y: hidden;
+	-ms-overflow-y: hidden;
+	white-space: nowrap;
+
+
+
+
+
+	
+	height: 28 * $unit;
+	width: 100%;
+	max-width: 100%;
+	
+	border-top: $border-thickness dashed #CDCDCD;
+}
+
+
+.posts_frame {
+
+	position: relative;
+	overflow-x: auto;
+	overflow-y: hidden;
+	-ms-overflow-y: hidden;
+	white-space: nowrap;
+
+	top: 4 * $unit;
+	height: 24 * $unit;
+	width: 100%;
+	padding-left: 2 * $unit;
+
+	background-color: #ddssww;
+
+}
+
+.conversation_header {
+	
+	position: absolute;
 	overflow: auto;
 	overflow-y: hidden;
 	-ms-overflow-y: hidden;
 	white-space: nowrap;
 
-	margin-top: 20px;	
+	margin-bottom: $unit;	
 	
-	height: 240px;
+	height: 2 * $unit;
 	width: 100%;
 	
-	background-color: #cccccc;
+	top: $unit;
+	left: 0;
 	
+	padding-top:  $unit;
+	padding-bottom:  $unit;
+
+}
+
+.bullet_symbol {
+	
+	position: relative;
+	float: left;
+	height: 1px;
+	width: 3 * $unit;
+	top: $unit - 1px;
+	bottom-margin: 2 * $unit - $border-thickness;
+	border-bottom: $border-thickness dashed #1a1a1a;
+	padding-left: 1px;
+	padding-top: 0px;
+	font-size: 1 * $unit;
+	text-shadow: 0 1px 1px #999999;
+
+}
+
+.conversation_label {
+	
+	
+	position: relative;
+	float: left;
+	
+	font-size: 2 * $unit;
+	text-shadow: 0 1px 1px #999999;
+	margin-left: $unit;
+
+}
+
+form {
+	letter-spacing: 0px;
+	word-spacing: 0px;
+}
+
+#post_field {
+	position: relative;
+
+	width:  20 * $unit;
+	height: 2.5 * $unit - 1;
+	border: 0px;
+	
+	float: right;
+	margin-left: $unit;
+	top: -$border-thickness - 0.5 * $unit;
+	
+	&::-webkit-input-placeholder {
+	 	line-height: 1.2;
+		text-shadow: 0 1px 1px #999999;
+	}
+	
+	padding: 0px;
+	padding-top: ( 1 + $unit/2 ) / 2;
+	padding-bottom: ( 1 + $unit/2 ) / 2;
+	padding-left: $unit;
+	padding-right: $unit;
+	font-size: 1.5 * $unit;
+	text-shadow: 0 1px 1px #999999;
+
+	-webkit-border-top-left-radius: $unit;
+	-moz-border-top-left-radius: $unit;
+	border-top-left-radius: $unit;
+	
+	-webkit-border-bottom-left-radius: $unit;
+	-moz-border-bottom-left-radius: $unit;
+	border-bottom-left-radius: $unit;
+
+
+	border: 1px dashed #343434;
+	border-right: none;
+	
+	
+	-webkit-box-shadow: 0px 1px 1px 0px #dedede, inset 2px 2px 3px 0px #bbbbbb;
+  -moz-box-shadow: 0px 1px 1px 0px #dedede, inset 2px 2px 3px 0px #bbbbbb;
+  box-shadow: 0px 1px 1px 0px #dedede, inset 2px 2px 3px 0px #bbbbbb;
+
+	&:focus {
+
+		-webkit-box-shadow: 0px 1px 1px 0px #999999, inset 2px 2px 3px 0px #888888;
+	  -moz-box-shadow: 0px 1px 1px 0px #999999, inset 2px 2px 3px 0px #888888;
+	  box-shadow: 0px 1px 1px 0px #999999, inset 2px 2px 3px 0px #888888;
+		border: 1px solid #232323;
+		border-right: none;
+	}
+	
+	&:hover {
+		
+		border: 1px solid #343434;			
+		border-right: none;
+	}
+}
+
+#submitPost {
+		width:  7 * $unit;
+		height: 3 * $unit + $border-thickness ;
+		display: inline;
+		position: relative;
+		float: right;
+		top: - 1 * ($border-thickness + 0.5 * $unit);		
+		font-weight: bold;
+		color: #454545;
+		
+		margin-right: 0;
+		margin-left: 0;
+		padding-bottom: $unit/2;
+		text-shadow: 0 1px 1px #999999;
+
+		-webkit-box-shadow: none;
+	  -moz-box-shadow: none;
+	  box-shadow: none;
+		border: 1px solid #676767;
+		background-color: #f9f9f9;
+
+		-webkit-box-shadow: 1px 1px 3px 0px #999999, inset -1px -2px 2px 0px #bfbfbf, inset 2px 2px 2px 0px #ebebeb;
+	  -moz-box-shadow: 1px 1px 3px 0px #999999, inset -1px -2px 2px 0px #bfbfbf, inset 2px 2px 2px 0px #ebebeb;
+	  box-shadow: 1px 1px 3px 0px #999999, inset -1px -2px 2px 0px #bfbfbf, inset 2px 2px 2px 0px #ebebeb;
+
+		
+		-webkit-border-top-right-radius: $unit;
+		-moz-border-top-right-radius: $unit;
+		border-top-right-radius: $unit;
+
+		-webkit-border-bottom-right-radius: $unit;
+		-moz-border-bottom-right-radius: $unit;
+		border-bottom-right-radius: $unit;
+
+
+
+
+		&:hover {
+			
+			font-weight: bolder;
+			color: #221f1f;
+			
+			border: 1px solid #343434;	
+			
+			-webkit-box-shadow: 0px 1px 1px 0px #bbbbbb, inset -1px -2px 2px 0px #dddddd, inset 1px 2px 2px 0px #999999;
+		  -moz-box-shadow: 0px 1px 1px 0px #bbbbbb, inset -1px -2px 2px 0px #dddddd, inset 1px 2px 2px 0px #999999;
+		  box-shadow: 0px 1px 1px 0px #bbbbbb, inset -1px -2px 2px 0px #dddddd, inset 1px 2px 2px 0px #999999;
+
+		}
+		
 }

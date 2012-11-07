@@ -1,7 +1,5 @@
 <% if @conversations.any? %>
 
-    <h3>Conversations (<%= @conversations.count %>)</h3>
-
     <%= render @conversations %>
 
 		<%= will_paginate @conversations %>

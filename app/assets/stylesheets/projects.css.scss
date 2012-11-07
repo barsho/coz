@@ -1,3 +1,182 @@
 // Place all the styles related to the Projects controller here.
 // They will automatically be included in application.css.
 // You can use Sass (SCSS) here: http://sass-lang.com/
+@import "variables";
+
+
+.project_header {
+	
+	position: relative;
+	overflow: auto;
+	overflow-y: hidden;
+	-ms-overflow-y: hidden;
+	white-space: nowrap;
+
+	margin-bottom: $unit;	
+	
+	height: 2 * $unit;
+	width: 100%;
+	
+	padding-top:  $unit;
+	padding-bottom:  $unit;
+
+}
+
+.bullet_symbol {
+	
+	position: relative;
+	float: left;
+	height: 1px;
+	width: 3 * $unit;
+	top: $unit - 1px;
+	bottom-margin: 2 * $unit - $border-thickness;
+	border-bottom: $border-thickness dashed #1a1a1a;
+	padding-left: 1px;
+	padding-top: 0px;
+	font-size: 1 * $unit;
+	text-shadow: 0 1px 1px #999999;
+
+}
+
+.right_bullet_symbol {
+	
+	position: relative;
+	float: right;
+	height: 1px;
+	width: 2 * $unit;
+	top: $unit - 1px;
+	bottom-margin: 2 * $unit - $border-thickness;
+	border-bottom: $border-thickness dashed #1a1a1a;
+	padding-left: 1px;
+	padding-top: 0px;
+	font-size: 1 * $unit;
+	text-shadow: 0 1px 1px #999999;
+
+}
+
+
+.project_label {
+	
+	
+	position: relative;
+	float: left;
+	
+	font-size: 2 * $unit;
+	text-shadow: 0 1px 1px #999999;
+	margin-left: $unit;
+
+}
+
+form {
+	letter-spacing: 0px;
+	word-spacing: 0px;
+}
+
+#conversation_field {
+	position: relative;
+
+	width:  20 * $unit;
+	height: 2.5 * $unit - 1;
+	border: 0px;
+	
+	float: right;
+	margin-left: $unit;
+	top: -$border-thickness - 0.5 * $unit;
+	
+	&::-webkit-input-placeholder {
+	 	line-height: 1.2;
+		text-shadow: 0 1px 1px #999999;
+	}
+	
+	padding: 0px;
+	padding-top: ( 1 + $unit/2 ) / 2;
+	padding-bottom: ( 1 + $unit/2 ) / 2;
+	padding-left: $unit;
+	padding-right: $unit;
+	font-size: 1.5 * $unit;
+	text-shadow: 0 1px 1px #999999;
+
+	-webkit-border-top-left-radius: $unit;
+	-moz-border-top-left-radius: $unit;
+	border-top-left-radius: $unit;
+	
+	-webkit-border-bottom-left-radius: $unit;
+	-moz-border-bottom-left-radius: $unit;
+	border-bottom-left-radius: $unit;
+
+
+	border: 1px dashed #343434;
+	border-right: none;
+	
+	
+	-webkit-box-shadow: 0px 1px 1px 0px #dedede, inset 2px 2px 3px 0px #bbbbbb;
+  -moz-box-shadow: 0px 1px 1px 0px #dedede, inset 2px 2px 3px 0px #bbbbbb;
+  box-shadow: 0px 1px 1px 0px #dedede, inset 2px 2px 3px 0px #bbbbbb;
+
+	&:focus {
+
+		-webkit-box-shadow: 0px 1px 1px 0px #999999, inset 2px 2px 3px 0px #888888;
+	  -moz-box-shadow: 0px 1px 1px 0px #999999, inset 2px 2px 3px 0px #888888;
+	  box-shadow: 0px 1px 1px 0px #999999, inset 2px 2px 3px 0px #888888;
+		border: 1px solid #232323;
+		border-right: none;
+	}
+	
+	&:hover {
+		
+		border: 1px solid #343434;			
+		border-right: none;
+	}
+}
+
+#submitConversation {
+		width:  7 * $unit;
+		height: 3 * $unit + $border-thickness ;
+		display: inline;
+		position: relative;
+		float: right;
+		top: - 1 * ($border-thickness + 0.5 * $unit);		
+		font-weight: bold;
+		color: #454545;
+		
+		margin-right: 0;	
+		margin-left: 0;
+		padding-bottom: $unit/2;
+		text-shadow: 0 1px 1px #999999;
+
+		-webkit-box-shadow: none;
+	  -moz-box-shadow: none;
+	  box-shadow: none;
+		border: 1px solid #676767;
+		background-color: #f9f9f9;
+
+		-webkit-box-shadow: 1px 1px 3px 0px #999999, inset -1px -2px 2px 0px #bfbfbf, inset 2px 2px 2px 0px #ebebeb;
+	  -moz-box-shadow: 1px 1px 3px 0px #999999, inset -1px -2px 2px 0px #bfbfbf, inset 2px 2px 2px 0px #ebebeb;
+	  box-shadow: 1px 1px 3px 0px #999999, inset -1px -2px 2px 0px #bfbfbf, inset 2px 2px 2px 0px #ebebeb;
+
+		
+		-webkit-border-top-right-radius: $unit;
+		-moz-border-top-right-radius: $unit;
+		border-top-right-radius: $unit;
+
+		-webkit-border-bottom-right-radius: $unit;
+		-moz-border-bottom-right-radius: $unit;
+		border-bottom-right-radius: $unit;
+
+
+
+
+		&:hover {
+			
+			font-weight: bolder;
+			color: #221f1f;
+			
+			border: 1px solid #343434;	
+			
+			-webkit-box-shadow: 0px 1px 1px 0px #bbbbbb, inset -1px -2px 2px 0px #dddddd, inset 1px 2px 2px 0px #999999;
+		  -moz-box-shadow: 0px 1px 1px 0px #bbbbbb, inset -1px -2px 2px 0px #dddddd, inset 1px 2px 2px 0px #999999;
+		  box-shadow: 0px 1px 1px 0px #bbbbbb, inset -1px -2px 2px 0px #dddddd, inset 1px 2px 2px 0px #999999;
+
+		}
+		
+}
