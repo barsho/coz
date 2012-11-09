@@ -27,7 +27,7 @@
 	position: relative;
 	float: left;
 	height: 1px;
-	width: 3 * $unit;
+	width: 3 * $unit - 1;
 	top: $unit - 1px;
 	bottom-margin: 2 * $unit - $border-thickness;
 	border-bottom: $border-thickness dashed #1a1a1a;
@@ -43,10 +43,10 @@
 	position: relative;
 	float: right;
 	height: 1px;
-	width: 2 * $unit;
+	width: 1.5 * $unit;
 	top: $unit - 1px;
 	bottom-margin: 2 * $unit - $border-thickness;
-	border-bottom: $border-thickness dashed #1a1a1a;
+	border-bottom: $border-thickness dashed #3a3a3a;
 	padding-left: 1px;
 	padding-top: 0px;
 	font-size: 1 * $unit;
@@ -81,7 +81,7 @@ form {
 	
 	float: right;
 	margin-left: $unit;
-	top: -$border-thickness - 0.5 * $unit;
+	top: - 0 * $border-thickness - 0.5 * $unit;
 	
 	&::-webkit-input-placeholder {
 	 	line-height: 1.2;
@@ -120,6 +120,7 @@ form {
 	  box-shadow: 0px 1px 1px 0px #999999, inset 2px 2px 3px 0px #888888;
 		border: 1px solid #232323;
 		border-right: none;
+		
 	}
 	
 	&:hover {

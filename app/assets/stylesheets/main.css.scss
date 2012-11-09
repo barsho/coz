@@ -39,7 +39,7 @@ html {
 
 body {
 	
-	background-color: #fdfdfd !important;
+	background-color: $bg-color !important;
 
 
 	position: absolute;
@@ -54,7 +54,7 @@ body {
 	background-color: #fff2f2;
 	
 	&:focus {
-		background-color: #fdfdfd;
+		background-color: $bg-color;
 	}
 }
 

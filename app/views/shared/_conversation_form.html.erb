@@ -1,9 +1,8 @@
-<div class="right_bullet_symbol"></div>
 
 
 <%= form_for(@conversation) do |f| %>
   <%= render 'shared/error_messages', object: f.object %>
-	<%= f.submit "Create", :id => "submitConversation" %>
+
   <%= f.text_field :title, :id => "conversation_field", placeholder: "Compose new tread..." %>
   <%= f.hidden_field :conversationable_id unless @conversation.conversationable_id.nil? %>
 

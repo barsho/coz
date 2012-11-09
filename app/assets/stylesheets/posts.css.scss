@@ -6,11 +6,12 @@
 	white-space: wrap;
 	
 
-	margin: 2 * $unit - 2;
+	margin: 2 * $unit - 1;
 	
 	height: 20 * $unit;
 	width: 20 * $unit;
-	
+	max-height: 20 * $unit;
+	max-width: 20 * $unit;
 	border: 1px solid #000000;
 	
 }

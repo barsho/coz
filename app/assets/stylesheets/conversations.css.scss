@@ -14,28 +14,32 @@
 
 
 	
-	height: 28 * $unit;
+	height: 26 * $unit;
 	width: 100%;
 	max-width: 100%;
 	
-	border-top: $border-thickness dashed #CDCDCD;
+	background-color: transparent;
+	
 }
 
 
 .posts_frame {
 
+	border-top: $border-thickness dashed #DEDEDE;
+	
 	position: relative;
 	overflow-x: auto;
 	overflow-y: hidden;
 	-ms-overflow-y: hidden;
 	white-space: nowrap;
 
-	top: 4 * $unit;
-	height: 24 * $unit;
+	top: 1.5 * $unit;
+	height: 23.5 * $unit;
 	width: 100%;
+	padding-top: 1 * $unit;
 	padding-left: 2 * $unit;
 
-	background-color: #ddssww;
+	background-color: transparent;
 
 }
 
@@ -52,39 +56,28 @@
 	height: 2 * $unit;
 	width: 100%;
 	
-	top: $unit;
+	top: 0;
 	left: 0;
 	
-	padding-top:  $unit;
+	padding-top:  $unit /2;
 	padding-bottom:  $unit;
+	z-index: 2;
 
 }
 
-.bullet_symbol {
-	
-	position: relative;
-	float: left;
-	height: 1px;
-	width: 3 * $unit;
-	top: $unit - 1px;
-	bottom-margin: 2 * $unit - $border-thickness;
-	border-bottom: $border-thickness dashed #1a1a1a;
-	padding-left: 1px;
-	padding-top: 0px;
-	font-size: 1 * $unit;
-	text-shadow: 0 1px 1px #999999;
 
-}
 
 .conversation_label {
 	
+	background-color: $bg-color;
 	
 	position: relative;
 	float: left;
 	
 	font-size: 2 * $unit;
 	text-shadow: 0 1px 1px #999999;
-	margin-left: $unit;
+	padding-left: $unit;
+	padding-right: $unit;
 
 }
 
@@ -99,10 +92,10 @@ form {
 	width:  20 * $unit;
 	height: 2.5 * $unit - 1;
 	border: 0px;
-	
+	z-index: 8;
 	float: right;
 	margin-left: $unit;
-	top: -$border-thickness - 0.5 * $unit;
+	top: - 0 * $border-thickness - 0.5 * $unit;
 	
 	&::-webkit-input-placeholder {
 	 	line-height: 1.2;
