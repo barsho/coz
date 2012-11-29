@@ -3,9 +3,9 @@ class Conversation < ActiveRecord::Base
   
   belongs_to :conversationable, polymorphic: true
   
-  belongs_to :parent_post, :class_name => 'Post', :foreign_key => 'relative_id'
+  belongs_to :parent_node, polymorphic: true, :foreign_key => 'relative_id'
   
-  has_many :posts
+  has_many :posts, dependent: :destroy
   has_many :users, :through => :posts
   
   validates :conversationable_id, presence: true

@@ -1,6 +1,28 @@
 @import "variables";
 
 
+
+.info_conversation {
+	
+	position: relative;
+	overflow-x: hidden;
+	overflow-y: hidden;
+	-ms-overflow-y: hidden;
+	white-space: nowrap;
+
+
+
+
+
+	
+	height: 26 * $unit;
+	width: 100%;
+	max-width: 100%;
+	
+	background-color: $info-bg;
+	
+}
+
 .conversation {
 	
 	position: relative;
@@ -144,12 +166,14 @@ form {
 }
 
 #submitPost {
+		visibility: hidden;
 		width:  7 * $unit;
 		height: 3 * $unit + $border-thickness ;
 		display: inline;
-		position: relative;
+		position: absolute;
+		z-index: -100;
 		float: right;
-		top: - 1 * ($border-thickness + 0.5 * $unit);		
+		top: - 0.5 * ($border-thickness + 1 * $unit) + 1;
 		font-weight: bold;
 		color: #454545;
 		

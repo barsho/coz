@@ -131,12 +131,14 @@ form {
 }
 
 #submitConversation {
+		visibility: hidden;
 		width:  7 * $unit;
 		height: 3 * $unit + $border-thickness ;
 		display: inline;
-		position: relative;
+		position: absolute;
+		z-index: -100;
 		float: right;
-		top: - 1 * ($border-thickness + 0.5 * $unit);		
+		top: - 0.5 * ($border-thickness + 1 * $unit) + 1;		
 		font-weight: bold;
 		color: #454545;
 		

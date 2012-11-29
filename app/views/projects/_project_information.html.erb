@@ -1,0 +1,33 @@
+<div class="info_conversation" id="project<%= @project.id %>">
+
+
+	<div class="conversation_header">
+
+		<div class="bullet_symbol"><%= @project.id.to_s() %></div>
+
+		<div class="conversation_label" >
+			<%= @project.name %>
+			<%= @project.conversations.any? %>
+			<%= @project.conversations.count %>
+			<% if current_user?(@project.user) %>
+				<%= link_to "remove", @project, method: :delete,
+			                                  data: { confirm: "You sure?" } %>
+			<% end %>
+			
+			by <%= link_to @project.user.firstname, user_path(@project.user) %>
+		</div>
+		
+		<% if signed_in? %>
+			<%= render 'shared/conversation_form', conversationable: @project %>
+			<% if current_user?(@project.user) %>
+
+			<% end %>
+		<% end %>
+	
+
+	</div>
+	<div class="posts_frame">
+
+	</div>
+</div>
+

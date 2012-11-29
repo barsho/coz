@@ -16,8 +16,11 @@ describe Post do
   it { should respond_to(:user_id) }
   it { should respond_to(:user) }
   its(:user) { should == user }
-  
+  it { should respond_to(:child_conversation) }
+    
   it { should be_valid }
+  
+
   
   describe "when user_id is not present" do
     before { @post.user_id = nil }
@@ -52,4 +55,12 @@ describe Post do
     it { should_not be_valid }
   end
 
+  describe "it should save" do
+    it { @post.save.should be_true }
+  end
+
+  describe "after save it should have child conversation" do
+    before { @post.save }
+    it { @post.child_conversation.should be_valid }
+  end
 end

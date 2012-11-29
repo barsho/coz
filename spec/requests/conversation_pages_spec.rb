@@ -13,7 +13,7 @@ describe "ConversationPages" do
 
      describe "with invalid information" do
 
-       it "should not create a conversatoin" do
+       it "should not create a conversation" do
          expect { click_button "Create" }.not_to change(Conversation, :count)
        end
 
@@ -25,7 +25,7 @@ describe "ConversationPages" do
 
      describe "with valid information" do
 
-       before { fill_in 'conversation_title', with: "Lorem ipsum" }
+       before { fill_in 'conversation[title]', with: "Lorem ipsum" }
        it "should create a conversation" do
          expect { click_button "Create" }.to change(Conversation, :count).by(1)
        end

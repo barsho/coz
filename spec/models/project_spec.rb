@@ -18,6 +18,8 @@ describe Project do
   
   it { should respond_to(:conversations) }
   it { should respond_to(:feed) }
+
+  it { should respond_to(:child_conversation) }
   
   it { should be_valid }
 

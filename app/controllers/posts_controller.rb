@@ -6,38 +6,77 @@ class PostsController < ApplicationController
   def create
 
     @conversation = Conversation.find_by_id(params[:post][:conversation_id])
-    @project = @conversation.conversationable
-    @conversations = @project.conversations.paginate(page: params[:page])    
-
     params[:post].delete :conversation_id
     
+    if(@conversation.conversationable_type == "Project")
     
-    @post = current_user.posts.build(params[:post])
+      @project = @conversation.conversationable
+      @conversations = @project.conversations.paginate(page: params[:page])    
+      @post = current_user.posts.build(params[:post])    
+      @post.conversation = @conversation
     
-    @post.conversation = @conversation
+      if @post.save
+        flash[:success] = "Post created!"
+      end
+      
+      respond_to do |format|
+        format.js   
+      end
+      
+    elsif(@conversation.conversationable_type == "User")
+      @user = @conversation.conversationable
+      @post = current_user.posts.build(params[:post])
+      @post.conversation = @conversation
     
-    if @post.save
-      flash[:success] = "Post created!"
-      redirect_to project_path(@project)
+      if @post.save
+        flash[:success] = "Post created!"
+      end
+      
+      respond_to do |format|
+        format.js   
+      end
+      
+    elsif(@conversation.conversationable_type == "Post")
+      @post = current_user.posts.build(params[:post])
+      @post.conversation = @conversation
+      @master = get_master(@conversation) 
+      if @post.save
+        flash[:success] = "Post created!"
+      end
+      
+      respond_to do |format|
+        format.js   
+      end
+      
     else
-        render  :template => "projects/show", :project => @project
-    end
     
-
+    end
   end
 
   def destroy
-    @post.destroy
     flash[:success] = "Post deleted!"
-    redirect_to project_path(@project)
+    @post.destroy
+
+    respond_to do |format|
+      format.js   
+    end
+
   end
   
   private
 
     def correct_user
       @post = current_user.posts.find_by_id(params[:id])
-      @project = @post.conversation.conversationable
-      redirect_to  project_path(@project) if @post.nil?
     end
+
+    def get_master(conversation)
+
+       @parent = conversation.conversationable
+       if (conversation.conversationable_type == 'Post')
+         get_master @parent.conversation
+       else
+         return @parent
+       end
+     end
 
 end

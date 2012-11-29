@@ -20,6 +20,7 @@ namespace :db do
     users = User.all(limit: 6)
     3.times do
       name = Faker::Lorem.sentence(1)
+      users.each { |user| user.create_conversation(title: user.firstname) }
       users.each { |user| user.projects.create!(name: name) }
     end
     

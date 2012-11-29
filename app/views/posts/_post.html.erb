@@ -1,12 +1,30 @@
-<div class="post">
+<div class="post" id="p<%= post.id %>">
 	<%= post.content %>
 	</br>
 	</br>
 	Posted <%= time_ago_in_words(post.created_at) %> ago.
   <% if current_user?(post.user) %>
 	
-    <%= link_to "delete", post, method: :delete,
+    <%= link_to "delete", post, method: :delete, :remote => true,
                                      data: { confirm: "You sure?" },
                                      title: post.content %>
   <% end %>
+
+	<!-- %= render 'shared/conversation_form', conversationable: post %-->
+	</br>
+	<%= link_to 'See details', post.child_conversation, :method => :get, :remote=>true, :class=>'get_post' %>
+
+	<script type="text/javascript">
+		function appendChildConversation(data) { 
+			 
+			 $('<p>Serhan wuz here</p>').insertAfter( $(this).closest('.conversation') );
+			 return false
+		}
+	
+		$('.get_post').bind("ajax:success", function(xhr, data, status) {  
+
+		});
+	</script>
+
 </div>
+

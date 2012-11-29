@@ -1,9 +1,12 @@
 
 
-<%= form_for(@conversation) do |f| %>
+<%= form_for(@conversation, :remote => true) do |f| %>
   <%= render 'shared/error_messages', object: f.object %>
 
+	<%= f.submit "Create", {  id: "submitConversation" } %> 
   <%= f.text_field :title, :id => "conversation_field", placeholder: "Compose new tread..." %>
-  <%= f.hidden_field :conversationable_id unless @conversation.conversationable_id.nil? %>
+
+  <%= f.hidden_field :conversationable_id , :value => conversationable.id  %>
+	<%= f.hidden_field :conversationable_type, :value => conversationable.class.name.sub("Controller", "").singularize %>
 
 <% end %>

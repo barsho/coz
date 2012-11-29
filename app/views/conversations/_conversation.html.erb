@@ -1,4 +1,4 @@
-<div class="conversation" id="<%= conversation.id %>">
+<div class="conversation" id="c<%= conversation.id %>">
 
 
 	<div class="conversation_header">
@@ -10,12 +10,12 @@
 			<%= conversation.posts.any? %>
 			<%= conversation.posts.count %>
 			<% if current_user?(conversation.conversationable.user) %>
-		    <%= link_to "remove", conversation, method: :delete,
+		    <%= link_to "remove", conversation, method: :delete, :remote => true,
 		                                     data: { confirm: "You sure?" },
 		                                     title: conversation.title %>
 		  <% end %>
 		</div>
-	
+
 		<%= render 'shared/post_form', conversation: conversation %>
 
 	</div>

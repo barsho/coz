@@ -1,0 +1,31 @@
+<div class="info_conversation" id="u<%= @user.id %>">
+
+
+	<div class="conversation_header">
+
+		<div class="bullet_symbol"><%= @user.id.to_s() %></div>
+
+		<div class="conversation_label" >
+			<%= @user.firstname + " " + @user.lastname %>
+		</div>
+		
+		<% if signed_in? %>
+			<% if current_user?(@user) %>
+				<%= link_to "new project!", newproject_path %>
+
+			<% end %>
+		<% end %>
+	
+
+	</div>
+	<div class="posts_frame">
+		<div class="post">
+			<% if @user.projects.any? %>
+	      <h3>Projects (<%= @user.projects.count %>)</h3>
+	      <% @user.projects.each do |project| %>
+					<li><%= link_to project.name, project_path(project) %></li>
+				<% end %>
+	    <% end %>
+		</div>
+	</div>
+</div>

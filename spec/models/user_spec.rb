@@ -36,8 +36,10 @@ describe User do
   it { should respond_to(:authenticate) }
   it { should respond_to(:projects) }
   it { should respond_to(:conversations) }
-  it { should respond_to(:conversation) }
+  it { should respond_to(:child_conversation) }
   it { should respond_to(:posts) }
+  
+
     
   it { should be_valid }
   it { should_not be_admin }
@@ -58,7 +60,7 @@ describe User do
     end
 
     it "should have the right microposts in the right order" do
-      @user.posts.should == [newer_post, older_post]
+      @user.posts.should == [older_post, newer_post]
     end
     
     it "should destroy associated microposts" do

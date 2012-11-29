@@ -7,7 +7,7 @@ class UsersController < ApplicationController
     @user = User.find(params[:id])
     @projects = @user.projects.paginate(page: params[:page])
     @posts = @user.posts.paginate(page: params[:page])
-    
+    @post = current_user.posts.build if signed_in?   
   end
   
   def new
@@ -17,6 +17,8 @@ class UsersController < ApplicationController
   def create
     @user = User.new(params[:user])
     if @user.save
+     # @user.create_conversation(title: @user.firstname + " " + @user.lastname)
+      
       sign_in @user
       flash[:success] = "welcome to coz"
       redirect_to @user

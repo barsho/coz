@@ -63,7 +63,7 @@ describe "UserPages" do
     before {  sign_in user
               visit user_path(user) }
 
-    it { should have_selector('h1',    text: user.firstname) }
+    it { should have_selector('.conversation_label',    text: user.firstname) }
     it { should have_selector('title', text: user.firstname) }
     
     describe "projects" do

@@ -9,6 +9,8 @@ class ProjectsController < ApplicationController
   def create
     @project = current_user.projects.build(params[:project])
     if @project.save
+   #   @project.create_info_conversation(title: @project.name)
+      
       flash[:success] = "Project created!"
       redirect_to @project
     else

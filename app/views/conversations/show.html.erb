@@ -1,0 +1,32 @@
+<div class="conversation" id="<%= @conversation.id %>">
+
+
+	<div class="conversation_header">
+
+		<div class="bullet_symbol"><%= @conversation.id.to_s() %></div>
+
+		<div class="conversation_label" >
+			<%= @conversation.title %>
+			<%= @conversation.posts.any? %>
+			<%= @conversation.posts.count %>
+			<% if current_user?(@conversation.conversationable.user) %>
+		    <%= link_to "remove", @conversation, method: :delete,
+		                                     data: { confirm: "You sure?" },
+		                                     title: @conversation.title %>
+		  <% end %>
+		</div>
+
+		<%= render 'shared/post_form', conversation: @conversation %>
+
+	</div>
+	<div class="posts_frame">
+
+	
+		<% if @conversation.posts.any? %>
+
+		    <%= render @conversation.posts %>
+
+		<% end %>
+	</div>
+</div>
+

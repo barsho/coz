@@ -1,0 +1,1 @@
+$("#c<%= escape_javascript(@conversation.conversationable.conversation.id.to_s() )%>").after("<%= escape_javascript(render(@conversation) )%>"); 

@@ -1,9 +1,13 @@
 <% provide(:title, @user.firstname) %>
 
-      <h1>
-        <%= gravatar_for @user %>
-        <%= @user.firstname %> <%= @user.lastname %>
-      </h1>
+<!--h1>
+  <%= gravatar_for @user %>
+  <%= @user.firstname %> <%= @user.lastname %>
+</h1-->
+
+
+			<%= render 'user_information' %>
+
 
 			<% if @user.posts.any? %>
 	      <h3>Posts (<%= @user.posts.count %>)</h3>
@@ -12,18 +16,5 @@
 	      </ol>
 	      <%= will_paginate @posts %>
 	    <% end %>
-
-      <h1>
-  			<%= link_to "new project!", newproject_path %>
-      </h1>
-		  <div>
-		    <% if @user.projects.any? %>
-		      <h3>Projects (<%= @user.projects.count %>)</h3>
-		      <ol class="projects">
-		        <%= render @projects %>
-		      </ol>
-		      <%= will_paginate @projects %>
-		    <% end %>
-		  </div>
 
 

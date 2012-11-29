@@ -15,9 +15,7 @@ class User < ActiveRecord::Base
   has_many :projects 
   has_many :posts, dependent: :destroy
   has_many :conversations, :through => :posts 
-  has_one :conversation, :as => :conversationable, dependent: :destroy
-  
-  
+    
   before_save { |user| user.email = email.downcase }
   before_save :create_remember_token
     
