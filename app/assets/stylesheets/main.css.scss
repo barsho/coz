@@ -1,20 +1,5 @@
 @import "variables";
 
-
-#logo {
-	
-	height: 6 * $unit;
-	margin-top: $unit;
-	margin-left: $unit;
-}
-
-.header {
-	
-	height: 8 * $unit;
-	border-bottom: 2px dashed #1a1a1a;
-	margin-bottom: $unit;
-}
-
 @font-face {
   font-family: 'alteHaas';
   src: url(font-path('altehaasgroteskregular-webfont.eot') + "?#iefix") format('embedded-opentype'),
@@ -40,7 +25,6 @@ html {
 body {
 	
 	background-color: $bg-color !important;
-
 
 	position: absolute;
 	width: 100%;

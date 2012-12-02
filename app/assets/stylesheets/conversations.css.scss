@@ -19,8 +19,6 @@
 	width: 100%;
 	max-width: 100%;
 	
-	background-color: $info-bg;
-	
 }
 
 .conversation {
@@ -47,8 +45,8 @@
 
 .posts_frame {
 
-	border-top: $border-thickness dashed #DEDEDE;
-	
+	/*border-top: $border-thickness dashed #DEDEDE;
+	*/
 	position: relative;
 	overflow-x: auto;
 	overflow-y: hidden;
