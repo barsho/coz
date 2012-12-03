@@ -2,9 +2,7 @@ class Conversation < ActiveRecord::Base
   attr_accessible :title
   
   belongs_to :conversationable, polymorphic: true
-  
-  belongs_to :parent_node, polymorphic: true, :foreign_key => 'relative_id'
-  
+
   has_many :posts, dependent: :destroy
   has_many :users, :through => :posts
   

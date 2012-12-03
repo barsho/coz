@@ -48,12 +48,19 @@ class ConversationsController < ApplicationController
   end
 
   def destroy
-    @conversation.destroy
-    flash[:success] = "Conversation deleted!"
-    respond_to do |format|
-      format.js
+    if(@conversation.conversationable_type == "Project")
+      @conversation.destroy
+      flash[:success] = "Conversation deleted!"
+      respond_to do |format|
+        format.js
+      end
+    elsif(@conversation.conversationable_type == "Post")
+      @conversation.conversationable.destroy
+      flash[:success] = "Post deleted!"
+      respond_to do |format|
+        format.js
+      end
     end
-    
   end
 
   private

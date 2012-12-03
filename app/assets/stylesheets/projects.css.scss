@@ -22,37 +22,7 @@
 
 }
 
-.bullet_symbol {
-	
-	position: relative;
-	float: left;
-	height: 1px;
-	width: 3 * $unit - 1;
-	top: $unit - 1px;
-	bottom-margin: 2 * $unit - $border-thickness;
-	border-bottom: $border-thickness dashed #1a1a1a;
-	padding-left: 1px;
-	padding-top: 0px;
-	font-size: 1 * $unit;
-	text-shadow: 0 1px 1px #999999;
 
-}
-
-.right_bullet_symbol {
-	
-	position: relative;
-	float: right;
-	height: 1px;
-	width: 1.5 * $unit;
-	top: $unit - 1px;
-	bottom-margin: 2 * $unit - $border-thickness;
-	border-bottom: $border-thickness dashed #3a3a3a;
-	padding-left: 1px;
-	padding-top: 0px;
-	font-size: 1 * $unit;
-	text-shadow: 0 1px 1px #999999;
-
-}
 
 
 .project_label {

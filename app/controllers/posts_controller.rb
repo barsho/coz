@@ -53,15 +53,7 @@ class PostsController < ApplicationController
     end
   end
 
-  def destroy
-    flash[:success] = "Post deleted!"
-    @post.destroy
 
-    respond_to do |format|
-      format.js   
-    end
-
-  end
   
   private
 

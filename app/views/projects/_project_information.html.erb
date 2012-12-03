@@ -1,8 +1,8 @@
 <div class="info_conversation" id="project<%= @project.id %>">
-
+	<div class="conversation_bg"></div>
 
 	<div class="conversation_header">
-
+		<div class="conversation_header_bg"></div>
 		<div class="bullet_symbol">p<%= @project.id.to_s() %></div>
 
 		<div class="conversation_label" >
@@ -17,17 +17,12 @@
 			by <%= link_to @project.user.firstname, user_path(@project.user) %>
 		</div>
 		
-		<% if signed_in? %>
-			<%= render 'shared/conversation_form', conversationable: @project %>
-			<% if current_user?(@project.user) %>
 
-			<% end %>
-		<% end %>
 	
 
 	</div>
 	<div class="posts_frame">
-
+		<%= render 'shared/conversation_form', conversationable: @project %>
 	</div>
 </div>
 

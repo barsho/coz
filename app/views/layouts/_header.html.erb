@@ -1,34 +1,52 @@
-
+<div class="bodyBuffer"></div>
 <header class="header">
+
+	<!-- LOGO -->
   <% if signed_in? %>
 		<%= link_to image_tag("logo.png", alt: "coz", id: "logo"), user_path(current_user) %>
 	<% else %>
 		<%= link_to image_tag("logo.png", alt: "coz", id: "logo"), root_path %>
 	<% end %>
-	
-	<%= link_to(users_path) do %>   
-		<div class="nav_link nav_left">people</div>
-	<% end %>
-	<%= link_to(projects_path) do %>   
-		<div class="nav_link nav_left">projects</div>
-	<% end %>
 
-	<div class="nav_link nav_right">
-		<navText id="downArrow">></navText>
-		<navText><%= current_user.firstname.downcase + "." + current_user.lastname.downcase %></navText>
+
+	<!-- PEOPLE -->	
+	<div class="nav_dropdown nav_left">
+		<div class="nav_dropdown_bg"></div>
+		<%= link_to(users_path) do %>   
+			<div class="nav_link">people</div>
+		<% end %>
+	</div>
+		
+	<!-- PROJECTS -->
+	<div class="nav_dropdown nav_left">
+		<div class="nav_dropdown_bg"></div>
+		<%= link_to(projects_path) do %>   
+			<div class="nav_link">projects</div>
+		<% end %>
+	</div>
+	<!-- USER -->
+	<div class="nav_dropdown nav_right">
+		<div class="nav_dropdown_bg"></div>
+		<%= link_to(user_path(current_user) ) do %>  
+			<div class="nav_link ">
+				<navBullet>></navBullet>
+				<%= current_user.firstname.downcase + "." + current_user.lastname.downcase %>
+			</div>
+		<% end %>
+		
+	
+		<%= link_to(edit_user_path(current_user) ) do %>   
+			<div class="nav_sublink"><navSubBullet>-</navSubBullet>settings</div>
+		<% end %>
+	
+		<%= link_to(signout_path, method: "delete") do %>   
+			<div class="nav_sublink"><navSubBullet>-</navSubBullet>logout</div>
+		<% end %>
+
+		<div class="nav_dropdown_bottomborder"></div>
+	
 	</div>
 
-  <!--% if signed_in? %>
-		<%= link_to(signout_path, method: "delete") do %>   
-			<div class="nav_link nav_right">logout</div>
-		<% end %>
-		<%= link_to(edit_user_path(current_user) ) do %>   
-			<div class="nav_link nav_right">settings</div>
-		<% end %>
-
-	<% else %>
-		<%= link_to "Sign in", signin_path %>
-  <% end %-->
 
 
 

@@ -1,12 +1,36 @@
 
 
-<%= form_for(@conversation, :remote => true) do |f| %>
-  <%= render 'shared/error_messages', object: f.object %>
 
-	<%= f.submit "Create", {  id: "submitConversation" } %> 
-  <%= f.text_field :title, :id => "conversation_field", placeholder: "Compose new tread..." %>
+<div class="post" id="new_conversation_form">
+	<div class="postInnerFrame">
+		<div class="post_header">	
+			<div class="post_label2">
+				new thread 
+			</div>
+			<div class="post_timestamp">
 
-  <%= f.hidden_field :conversationable_id , :value => conversationable.id  %>
-	<%= f.hidden_field :conversationable_type, :value => conversationable.class.name.sub("Controller", "").singularize %>
+			</div>
+		</div>
+		<div class="post_content_frame">
+			<%= form_for(@conversation, :remote => true) do |f| %>
+			  <%= render 'shared/error_messages', object: f.object %>
 
-<% end %>
+			  <%= f.text_field :title, :id => "post_field", placeholder: "Compose new thread" %>
+
+			  <%= f.hidden_field :conversationable_id , :value => conversationable.id  %>
+				<%= f.hidden_field :conversationable_type, :value => conversationable.class.name.sub("Controller", "").singularize %>
+		</div>
+
+		<div class="post_footer">
+
+				<%= f.submit ">submit", {  id: "submitPost" } %> 
+
+		</div>
+	</div>
+
+</div>
+
+
+
+
+			<% end %>

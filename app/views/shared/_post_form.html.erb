@@ -1,13 +1,32 @@
-<!--<div class="right_bullet_symbol"></div> -->
 
-<%= form_for(@post, :remote => true) do |f| %>
-  <%= render 'shared/error_messages', object: f.object %>
-  
-	<%= f.submit "Post", {  id: "submitPost" } %> 
-  <%= f.text_field :content, :id => "post_field", placeholder: "Compose new post..." %>
-	<%= f.hidden_field :conversation_id, :value => conversation.id  %>
+<div class="post" id="new_post_form">
+	<div class="postInnerFrame">
+		<div class="post_header">	
+			<div class="post_label2">
+				new post 
+			</div>
+			<div class="post_timestamp">
+
+			</div>
+		</div>
+		<div class="post_content_frame">
+			<%= form_for(@post, :remote => true) do |f| %>
+			  <%= render 'shared/error_messages', object: f.object %>
+
+			  <%= f.text_field :content, :id => "post_field", placeholder: " (140 characters max)" %>
+				<%= f.hidden_field :conversation_id, :value => conversation.id  %>
+		</div>
+
+		<div class="post_footer">
+
+				<%= f.submit ">submit", {  id: "submitPost" } %> 
+
+		</div>
+	</div>
+
+</div>
 
 
-<% end %>
 
 
+			<% end %>

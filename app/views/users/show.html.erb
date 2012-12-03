@@ -1,4 +1,4 @@
-<% provide(:title, @user.firstname) %>
+<% provide(:title, @user.firstname.downcase) %>
 
 <!--h1>
   <%= gravatar_for @user %>

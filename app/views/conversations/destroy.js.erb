@@ -1,1 +1,2 @@
 $("#c<%= escape_javascript(@conversation.id.to_s() )%>").remove();
+$("#p<%= escape_javascript(@conversation.conversationable.id.to_s() )%>").remove();
