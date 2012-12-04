@@ -1,27 +1,33 @@
 <div class="info_conversation" id="project<%= @project.id %>">
 	<div class="conversation_bg"></div>
 
+
 	<div class="conversation_header">
 		<div class="conversation_header_bg"></div>
 		<div class="bullet_symbol">p<%= @project.id.to_s() %></div>
 
 		<div class="conversation_label" >
-			<%= @project.name %>
-			<%= @project.conversations.any? %>
-			<%= @project.conversations.count %>
+			<b><%= @project.name %></b>
+			<% @fullname = @project.user.firstname[0].downcase + "." + @project.user.lastname.downcase%>
+			by <%= link_to @fullname , user_path(@project.user) %>
+		</div>
+		
+		<!--div class="conversation_stat">
+			<%=  pluralize(@project.conversations.count , "thread") %>
+		</div-->
+		<div class="right_bullet_symbol"></div>
+		<div class="conversation_stat">
 			<% if current_user?(@project.user) %>
 				<%= link_to "remove", @project, method: :delete,
 			                                  data: { confirm: "You sure?" } %>
 			<% end %>
-			
-			by <%= link_to @project.user.firstname, user_path(@project.user) %>
 		</div>
-		
-
-	
 
 	</div>
 	<div class="posts_frame">
+		
+		
+
 		<%= render 'shared/conversation_form', conversationable: @project %>
 	</div>
 </div>

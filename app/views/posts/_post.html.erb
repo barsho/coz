@@ -1,6 +1,9 @@
-<div class="post" id="p<%= post.id %>">
+<div class="post" id="p<%= post.id %>">	
 	<div class="postInnerFrame">
+		<div class="post_bg"></div>
 		<div class="post_header">	
+			<div class="post_header_bg"></div>
+			
 	 		<%= link_to post.user do %>
 				<div class="post_label">
 					<%= post.user.firstname[0].downcase + "." + post.user.lastname.downcase %>
@@ -9,7 +12,7 @@
 			<div class="post_timestamp">
 				<%if post.created_at < Time.now.beginning_of_year() %>
 					<%= post.created_at.strftime("%m/%d/%y") %>
-				<%elsif post.created_at < 1.day.ago %>
+				<%elsif post.created_at < Time.now.beginning_of_day() %>
 					<%= post.created_at.strftime("%m/%d") %>
 				<%else %>
 					<%= post.created_at.strftime("%H:%M") %>

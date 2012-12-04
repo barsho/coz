@@ -1,1 +1,1 @@
-$("#c<%= escape_javascript(@post.conversation.id.to_s() )%> .posts_frame").append("<%= escape_javascript(render(@post) )%>");
+$("#c<%= escape_javascript(@post.conversation.id.to_s() )%> #new_post_form").before("<%= escape_javascript(render(@post) )%>");

@@ -1,8 +1,11 @@
 
 <div class="post" id="new_post_form">
 	<div class="postInnerFrame">
-		<div class="post_header">	
-			<div class="post_label2">
+		<div class="new_post_bg"></div>
+		
+		<div class="new_post_header">	
+			<div class="new_post_header_bg"></div>
+			<div class="new_post_label">
 				new post 
 			</div>
 			<div class="post_timestamp">
@@ -10,14 +13,15 @@
 			</div>
 		</div>
 		<div class="post_content_frame">
+
 			<%= form_for(@post, :remote => true) do |f| %>
 			  <%= render 'shared/error_messages', object: f.object %>
 
-			  <%= f.text_field :content, :id => "post_field", placeholder: " (140 characters max)" %>
+			  <%= f.text_area :content, :id => "post_field", placeholder: "(140 chars max)" %>
 				<%= f.hidden_field :conversation_id, :value => conversation.id  %>
 		</div>
 
-		<div class="post_footer">
+		<div class="new_post_footer">
 
 				<%= f.submit ">submit", {  id: "submitPost" } %> 
 

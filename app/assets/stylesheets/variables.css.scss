@@ -10,10 +10,28 @@ $border-thickness: 2px;
 
 $unit: 10px;
 
+/* GRADIENTS */
+/* conversation background */
 $cv_bg3: #FAFAFA;
 $cv_bg1: #F4F4F4;
 $cv_bg2: #F7F7F7;
-
+/* conversation header background */
 $cv_hd_bg1: #FDFDFD;
 $cv_hd_bg3: #F7F7F7;
 $cv_hd_bg2: #FAFAFA;
+/* post background */
+$pt_bg3: #FAFAA4;
+$pt_bg1: #F2F2A0;
+$pt_bg2: #F6F6A2;
+/* post header background */
+$pt_hd_bg1: #FDFDA4;
+$pt_hd_bg3: #F7F7A0;
+$pt_hd_bg2: #FAFAA2;
+/* new post background */
+$npt_bg3: #FDFDFD;
+$npt_bg1: #F6F6F6;
+$npt_bg2: #FAFAFA;
+/* new post header background */
+$npt_hd_bg1: #FAFAFA;
+$npt_hd_bg3: #F2F2F2;
+$npt_hd_bg2: #F6F6F6;

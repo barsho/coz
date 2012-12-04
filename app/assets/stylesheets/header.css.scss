@@ -53,6 +53,7 @@
 	margin-top: $unit;
 	margin-bottom: $unit;
 	overflow-x: hidden;
+
 	
 	&:hover {	max-height: 25 * $unit;	}
 	.nav_sublink {display: block;}
@@ -94,6 +95,7 @@
 	padding-top: 1 * $unit + 4;
 	padding-bottom: 0;
 	position: relative;
+	white-space: nowrap;
 	
 	font-size: 2.5 * $unit;
 	color: #505050;
@@ -147,9 +149,10 @@ navBullet {
 	
 	color: #dedede;
 	text-shadow: 0 1px 1px #cdcdcd;
-	margin-right: 0*$unit;
-	
+	margin-right: 0*$unit ;
+	position: relative;
 	float: left;
+
 
 }
 

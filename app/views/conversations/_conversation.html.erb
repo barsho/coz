@@ -6,15 +6,20 @@
 		<div class="bullet_symbol"><%= conversation.id.to_s() %></div>
 		<div class="conversation_label" >
 			<%= conversation.title %>
+		</div>
+		
+		<!--div class="conversation_stat">
+			<%=  pluralize(conversation.posts.count, "post") %>
+		</div-->
+		<div class="right_bullet_symbol"></div>
+		<div class="conversation_stat">
 			<% if current_user?(conversation.conversationable.user) %>
 		    <%= link_to "remove", conversation, method: :delete, :remote => true,
 		                                     data: { confirm: "You sure?" },
 		                                     title: conversation.title %>
 		  <% end %>
 		</div>
-		<div class="conversation_stat">
-			<%=  pluralize(conversation.posts.count, "post") %>
-		</div>
+		
 	</div>
 	
 
