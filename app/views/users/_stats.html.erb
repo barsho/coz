@@ -1,0 +1,41 @@
+<div class="protected_post" id="stats"><div class="postInnerFrame"><div class="protected_post_bg"></div>
+		<div class="protected_post_header"><div class="protected_post_header_bg"></div>
+			<div class="protected_post_label">statistics</div>
+			<div class="post_timestamp"></div>
+		</div>
+		<div class="post_content_frame">
+			<div class="protected_post_content">
+				<% @age = ((Time.now - @user.created_at).to_f / (24 * 60 * 60)) %>
+
+				since:
+				<%if @age > 365.25 %>
+					<%= (@age/365.25).round(0).to_s() + "y" %>
+				<%elsif @age > 30.5 %>
+						<%= (@age/30.5).round(0).to_s() + "m" %> %>
+				<%elsif @age > 7 %>
+					<%= (@age/7).round(0).to_s() + "w" %> %>
+				<%elsif @age > 1 %>
+					<%= @age.round(0).to_s() + "d" %>
+				<%elsif @age > 1/24 %>
+					<%= (@age*(24)).round(0).to_s() + "h" %>
+				<%else %> 
+					<%= "N/A"%>
+				<%end %></br>
+
+				posts: <%= @user.posts.count.to_s()%></br>
+				posts/project: <%= (@user.posts.count.to_f() / @user.projects.count.to_f()).round(1) %></br>
+				
+				<%if @age > 1 %>
+					posts/day: <%= ( @user.posts.count.to_f() /  ((Time.now - @user.created_at).to_f / (24 * 60 * 60))).round(1) %></br>
+				<%elsif @age > 1/24 %>
+					posts/hour: <%= ( @user.posts.count.to_f() /  ((Time.now - @user.created_at).to_f / (60 * 60))).round(1) %></br>
+				<%else %> 
+					<%= "N/A"%></br>
+				<%end %>
+
+
+			</div>
+		</div>
+		<div class="protected_post_footer"><div class="post_footer_label">4 active measures</div></div>
+	</div>
+</div>

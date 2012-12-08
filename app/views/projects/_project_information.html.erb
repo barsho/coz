@@ -7,9 +7,7 @@
 		<div class="bullet_symbol">p<%= @project.id.to_s() %></div>
 
 		<div class="conversation_label" >
-			<b><%= @project.name %></b>
-			<% @fullname = @project.user.firstname[0].downcase + "." + @project.user.lastname.downcase%>
-			by <%= link_to @fullname , user_path(@project.user) %>
+			<%= @project.name.downcase.capitalize %>
 		</div>
 		
 		<!--div class="conversation_stat">
@@ -17,7 +15,7 @@
 		</div-->
 		<div class="right_bullet_symbol"></div>
 		<div class="conversation_stat">
-			<% if current_user?(@project.user) %>
+			<% if current_user?(@project.users[0]) %>
 				<%= link_to "remove", @project, method: :delete,
 			                                  data: { confirm: "You sure?" } %>
 			<% end %>
@@ -25,8 +23,78 @@
 
 	</div>
 	<div class="posts_frame">
+
+		<%= render 'stats' %>
+
 		
+		<div class="protected_post" id="team"><div class="postInnerFrame"><div class="protected_post_bg"></div>
+				<div class="protected_post_header"><div class="protected_post_header_bg"></div>
+					<div class="protected_post_label">team</div>
+					<div class="post_timestamp"></div>
+				</div>
+				<div class="post_content_frame">
+					<div class="protected_post_content">
+						<% if @project.users.any? %>
+				      <% @project.users.each do |user| %>
+								<%= link_to user.firstname.downcase + "." + user.lastname.downcase , user_path(user) %><br>
+							<% end %>
+				    <% end %>
+
+					</div>
+				</div>
+				<div class="protected_post_footer"><div class="post_footer_label">
+					<%= pluralize(@project.users.count, "person") %>
+				</div></div>
+			</div>
+		</div>
+
+		<div class="protected_post" id="console"><div class="postInnerFrame"><div class="protected_post_bg"></div>
+				<div class="protected_post_header"><div class="protected_post_header_bg"></div>
+					<div class="protected_post_label">console</div>
+					<div class="post_timestamp"></div>
+				</div>
+				<div class="post_content_frame">
+					<div class="protected_post_content">
+						github: coz.git</br>
+						blog: cozblog.com</br>
+						birthday: 12.12.12</br>
+						mascot: cin
+					</div>
+				</div>
+				<div class="protected_post_footer"><div class="post_footer_label">4 wikis</div></div>
+			</div>
+		</div>
+
+		<div class="protected_post" id="tickets"><div class="postInnerFrame"><div class="protected_post_bg"></div>
+				<div class="protected_post_header"><div class="protected_post_header_bg"></div>
+					<div class="protected_post_label">tickets</div>
+					<div class="post_timestamp"></div>
+				</div>
+				<div class="post_content_frame">
+					<div class="protected_post_content">development: 3</br>branding: 2</br>marketing: 2</div>
+				</div>
+				<div class="protected_post_footer"><div class="post_footer_label">7 tasks</div></div>
+			</div>
+		</div>
 		
+		<div class="protected_post" id="tickets"><div class="postInnerFrame"><div class="protected_post_bg"></div>
+				<div class="protected_post_header"><div class="protected_post_header_bg"></div>
+					<div class="protected_post_label">resources</div>
+					<div class="post_timestamp"></div>
+				</div>
+				<div class="post_content_frame">
+					<div class="protected_post_content">
+						knowledge</br>
+						network</br>
+						labor</br>
+						funds</br>
+					</div>
+				</div>
+				<div class="protected_post_footer"><div class="post_footer_label">12 valuations</div></div>
+			</div>
+		</div>
+		
+
 
 		<%= render 'shared/conversation_form', conversationable: @project %>
 	</div>

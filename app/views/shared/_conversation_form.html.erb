@@ -3,20 +3,17 @@
 
 <div class="post" id="new_conversation_form">
 	<div class="postInnerFrame">
+	
+		<%= form_for(@conversation, :remote => true) do |f| %>
 		<div class="new_post_bg"></div>
 		
-		<div class="new_post_header">	
+		<div class="new_conversation_header">	
 			<div class="new_post_header_bg"></div>
 			
-			<div class="new_post_label">
-				new thread 
-			</div>
-			<div class="post_timestamp">
-
-			</div>
+			<%= f.submit ">new.thread", {  id: "submitPost" } %> 
 		</div>
-		<div class="post_content_frame">
-			<%= form_for(@conversation, :remote => true) do |f| %>
+		<div class="new_post_content_frame">
+
 			  <%= render 'shared/error_messages', object: f.object %>
 
 			  <%= f.text_area :title, :id => "post_field", placeholder: "(140 chars max)" %>
@@ -25,11 +22,6 @@
 				<%= f.hidden_field :conversationable_type, :value => conversationable.class.name.sub("Controller", "").singularize %>
 		</div>
 
-		<div class="new_post_footer">
-
-				<%= f.submit ">submit", {  id: "submitPost" } %> 
-
-		</div>
 	</div>
 
 </div>

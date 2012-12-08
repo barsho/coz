@@ -8,9 +8,11 @@ class ProjectsController < ApplicationController
   
   def create
     @project = current_user.projects.build(params[:project])
+
+
     if @project.save
    #   @project.create_info_conversation(title: @project.name)
-      
+      @project.users << current_user
       flash[:success] = "Project created!"
       redirect_to @project
     else
@@ -50,7 +52,7 @@ class ProjectsController < ApplicationController
   
   def project_owner
     @project = Project.find(params[:id])
-    @user = @project.user
+    @user = @project.users[0]
     
     redirect_to(@project) unless current_user?(@user)
   end

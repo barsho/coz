@@ -14,21 +14,12 @@ class PostsController < ApplicationController
       @conversations = @project.conversations.paginate(page: params[:page])    
       @post = current_user.posts.build(params[:post])    
       @post.conversation = @conversation
-    
+
       if @post.save
-        flash[:success] = "Post created!"
-      end
-      
-      respond_to do |format|
-        format.js   
-      end
-      
-    elsif(@conversation.conversationable_type == "User")
-      @user = @conversation.conversationable
-      @post = current_user.posts.build(params[:post])
-      @post.conversation = @conversation
-    
-      if @post.save
+        if @project.users.include?(current_user) == false
+          @project.users << current_user
+        end 
+
         flash[:success] = "Post created!"
       end
       
@@ -40,7 +31,12 @@ class PostsController < ApplicationController
       @post = current_user.posts.build(params[:post])
       @post.conversation = @conversation
       @master = get_master(@conversation) 
+
       if @post.save
+        if @master.users.include?(current_user) == false
+         @master.users << current_user
+       end
+        
         flash[:success] = "Post created!"
       end
       

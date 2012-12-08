@@ -1,31 +1,25 @@
 
 <div class="post" id="new_post_form">
 	<div class="postInnerFrame">
+		<%= form_for(@post, :remote => true) do |f| %>	
 		<div class="new_post_bg"></div>
-		
+				
 		<div class="new_post_header">	
 			<div class="new_post_header_bg"></div>
-			<div class="new_post_label">
-				new post 
-			</div>
-			<div class="post_timestamp">
 
-			</div>
+				<%= f.submit ">new.post", {  id: "submitPost" } %> 
+
 		</div>
-		<div class="post_content_frame">
+		<div class="new_post_content_frame">
 
-			<%= form_for(@post, :remote => true) do |f| %>
+
 			  <%= render 'shared/error_messages', object: f.object %>
 
 			  <%= f.text_area :content, :id => "post_field", placeholder: "(140 chars max)" %>
 				<%= f.hidden_field :conversation_id, :value => conversation.id  %>
 		</div>
 
-		<div class="new_post_footer">
 
-				<%= f.submit ">submit", {  id: "submitPost" } %> 
-
-		</div>
 	</div>
 
 </div>

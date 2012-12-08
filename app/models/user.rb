@@ -12,9 +12,11 @@
 class User < ActiveRecord::Base
   attr_accessible :email, :firstname, :lastname, :password
   has_secure_password  
-  has_many :projects 
+  has_and_belongs_to_many :projects 
   has_many :posts, dependent: :destroy
   has_many :conversations, :through => :posts 
+  has_many :users, :through => :projects 
+  has_many :initiatives, :class_name => 'Project', :foreign_key => "creator_id"
     
   before_save { |user| user.email = email.downcase }
   before_save :create_remember_token

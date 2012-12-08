@@ -43,6 +43,4 @@ module SessionsHelper
   end
   
 
-  
-  
 end

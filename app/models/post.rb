@@ -13,11 +13,25 @@ class Post < ActiveRecord::Base
     
   default_scope order: 'posts.created_at ASC'  
   
+  def cumulative_post_count
+    # This is preliminary. See "Following users" for the full implementation.
+    @sum = 0
+    if child_conversation.posts.count != 0
+      child_conversation.posts.each do |post|
+        @sum += post.cumulative_post_count
+      end
+      @sum += child_conversation.posts.count
+    end
+    
+		return @sum
+  end
+  
   private
 
     def initiate_child_conversation
       self.create_child_conversation(:title => self.content)
     end
+  
   
 end
 

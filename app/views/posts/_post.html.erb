@@ -24,7 +24,7 @@
 		<%= link_to post.child_conversation, :method => :get, :remote=>true, :class=>'get_post' do %>
 			<div class="post_footer">
 				<div class="post_footer_label">
-					<%= pluralize(post.child_conversation.posts.count, "post") %>
+					<%= pluralize(post.cumulative_post_count, "post") %>
 				</div>
 			</div>
 		<% end %>

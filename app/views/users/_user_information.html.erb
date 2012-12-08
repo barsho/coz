@@ -3,10 +3,10 @@
 
 	<div class="conversation_header">
 
-		<div class="bullet_symbol"><%= @user.id.to_s() %></div>
+		<div class="bullet_symbol">u<%= @user.id.to_s() %></div>
 
 		<div class="conversation_label" >
-			<%= @user.firstname + " " + @user.lastname %>
+			<%= @user.firstname.downcase.capitalize + " " + @user.lastname.downcase.capitalize %>
 		</div>
 		
 		<% if signed_in? %>
@@ -19,13 +19,85 @@
 
 	</div>
 	<div class="posts_frame">
-		<div class="post">
-			<% if @user.projects.any? %>
-	      <h3>Projects (<%= @user.projects.count %>)</h3>
-	      <% @user.projects.each do |project| %>
-					<li><%= link_to project.name, project_path(project) %></li>
-				<% end %>
-	    <% end %>
-		</div>
+
+		<%= render 'stats' %>
+
+			
+
+			<div class="protected_post" id="associates"><div class="postInnerFrame"><div class="protected_post_bg"></div>
+					<div class="protected_post_header"><div class="protected_post_header_bg"></div>
+						<div class="protected_post_label">associates</div>
+						<div class="post_timestamp"></div>
+					</div>
+					<div class="post_content_frame">
+						<div class="protected_post_content">
+							<% if @user.users.any? %>
+					      <% @user.users.each do |user| %>
+									<% if @user != user %>
+										<%= link_to user.firstname.downcase + "." + user.lastname.downcase , user_path(user) %><br>
+									<% end %>
+								<% end %>
+					    <% end %>
+						</div>
+					</div>
+					<div class="protected_post_footer"><div class="post_footer_label">
+						<% if @user.users.include?(@user) %>
+							<%= pluralize( @user.users.count - 1, "person") %>
+						<% else %>
+							<%= pluralize( @user.users.count, "person") %>
+						<% end %>
+						 
+					</div></div>
+				</div>
+			</div>
+
+			<div class="protected_post" id="projects"><div class="postInnerFrame"><div class="protected_post_bg"></div>
+					<div class="protected_post_header"><div class="protected_post_header_bg"></div>
+						<div class="protected_post_label">projects</div>
+						<div class="post_timestamp"></div>
+					</div>
+					<div class="post_content_frame">
+						<div class="protected_post_content">
+							<% if @user.projects.any? %>
+					      <% @user.projects.each do |project| %>
+									<%= link_to project.name, project_path(project) %><br>
+								<% end %>
+					    <% end %>
+						</div>
+					</div>
+					<div class="protected_post_footer"><div class="post_footer_label">
+						<%= pluralize( @user.projects.count, "project") %>
+					</div></div>
+				</div>
+			</div>
+
+			<div class="protected_post" id="experience"><div class="postInnerFrame"><div class="protected_post_bg"></div>
+					<div class="protected_post_header"><div class="protected_post_header_bg"></div>
+						<div class="protected_post_label">experience</div>
+						<div class="post_timestamp"></div>
+					</div>
+					<div class="post_content_frame">
+						<div class="protected_post_content">recent job</br>college degree</div>
+					</div>
+					<div class="protected_post_footer"><div class="post_footer_label">7 tasks</div></div>
+				</div>
+			</div>
+			
+			<div class="protected_post" id="contact"><div class="postInnerFrame"><div class="protected_post_bg"></div>
+					<div class="protected_post_header"><div class="protected_post_header_bg"></div>
+						<div class="protected_post_label">contact</div>
+						<div class="post_timestamp"></div>
+					</div>
+					<div class="post_content_frame">
+						<div class="protected_post_content">
+							asmith@gmail.com</br>
+							linkedin.com/asmith</br>
+							github.com/asmith
+						</div>
+					</div>
+					<div class="protected_post_footer"><div class="post_footer_label">4 wikis</div></div>
+				</div>
+			</div>
+
 	</div>
 </div>

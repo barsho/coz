@@ -1,1 +1,8 @@
 $("#c<%= escape_javascript(@conversation.conversationable.conversation.id.to_s() )%>").after("<%= escape_javascript(render(@conversation) )%>"); 
+var convo = $("#c<%= escape_javascript(@conversation.id.to_s() )%>");
+
+convo.data("realHeight", convo.height() ).css("height","0").animate({
+    height: convo.data("realHeight")
+  }, 100, function() {
+    // Animation complete.
+  });

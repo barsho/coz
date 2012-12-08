@@ -11,14 +11,25 @@
 		<!--div class="conversation_stat">
 			<%=  pluralize(conversation.posts.count, "post") %>
 		</div-->
-		<div class="right_bullet_symbol"></div>
-		<div class="conversation_stat">
-			<% if current_user?(conversation.conversationable.user) %>
-		    <%= link_to "remove", conversation, method: :delete, :remote => true,
-		                                     data: { confirm: "You sure?" },
-		                                     title: conversation.title %>
+		<% if conversation.conversationable_type == "Project" %>
+			<% if current_user?(conversation.conversationable.users[0]) %>
+				<div class="right_bullet_symbol"></div>
+				<div class="conversation_stat">
+				    <%= link_to "remove", conversation, method: :delete, :remote => true,
+				                                     data: { confirm: "You sure?" },
+				                                     title: conversation.title %>
+				</div>
 		  <% end %>
-		</div>
+		<% else %>
+			<% if current_user?(conversation.conversationable.user) %>
+				<div class="right_bullet_symbol"></div>
+				<div class="conversation_stat">
+				    <%= link_to "remove", conversation, method: :delete, :remote => true,
+				                                     data: { confirm: "You sure?" },
+				                                     title: conversation.title %>
+				</div>
+		  <% end %>
+		<% end %>
 		
 	</div>
 	
