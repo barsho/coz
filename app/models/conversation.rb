@@ -11,5 +11,23 @@ class Conversation < ActiveRecord::Base
   
   default_scope order: 'conversations.created_at DESC'
   
+  def content_index
+    # This is preliminary. See "Following users" for the full implementation.
+    @index = ""
+    if conversationable_type != "Project" 
+      @index += conversationable.conversation.content_index
+      @index += "."
+      @index += ( conversationable.conversation.posts.index(conversationable) + 1).to_s()
+    end
+
+    if conversationable_type == "Project"
+      @index += (conversationable.conversations.index(self) + 1 ).to_s()
+    end
+
+    
+    return @index
+  end
+  
+  
 end
 
