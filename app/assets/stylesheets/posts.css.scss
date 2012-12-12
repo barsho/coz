@@ -14,7 +14,6 @@
 	width: 20 * $unit;
 	max-height: 20 * $unit;
 	max-width: 20 * $unit;
-	
 
 	border: 1px solid #BBBBBB;
 	
@@ -28,6 +27,10 @@
     -webkit-box-shadow: 0px $unit/3 $unit*1.1 rgba(10, 10, 10, 0.30);
 	
 }
+
+
+
+
 
 .protected_post {
 	
@@ -66,6 +69,7 @@
 	position: absolute;
 	height: 20 * $unit;
 	width: 20 * $unit;
+		overflow-y: visible;
 }
 
 
@@ -376,6 +380,39 @@
 
 }
 
+
+.arrow-up-frame {
+	width: 0; 
+	height: 0; 
+	border-left: 2*$unit solid transparent;
+	border-right: 2*$unit solid transparent;
+	
+	border-bottom: 2*$unit solid #BCBCBC;
+	
+	position: absolute;
+	bottom: -0*$unit - 0*$border-thickness;
+	left: 0.6*$unit + 10*$unit - 1*$unit;
+
+	opacity: 0;
+	display: none;
+}
+
+.arrow-up-body {
+	width: 0; 
+	height: 0; 
+	border-left: 2*$unit solid transparent;
+	border-right: 2*$unit solid transparent;
+	
+	border-bottom: 2*$unit solid #fdfdfd;
+	
+	position: absolute;
+	bottom: -0*$unit - 1* $border-thickness;
+	left: 0.6*$unit + 10*$unit - 1*$unit;
+
+	z-index: 100000;
+	opacity: 0;
+	display: none;
+}
 
 
 .post_bg {

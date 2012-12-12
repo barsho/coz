@@ -7,11 +7,20 @@ var parent_convo_siblings = $("#c<%= escape_javascript(@conversation.conversatio
 var parent_post = $("#p<%= escape_javascript(@conversation.conversationable.id.to_s() )%>");
 
 
-parent_convo_children.css("opacity", "0.75");
+parent_convo_children.css("opacity", "0.7");
 parent_post.css("opacity", "1");
 
 parent_convo_siblings.remove();
 
+
+
+var left_offset = ( parent_post.attr("index") - 1)* 215 + 100;
+
+parent_convo.find(".arrow").css("left", left_offset ).css("display","block").animate({
+    opacity: 1
+  }, 100, function() {
+    // Animation complete.
+  });
 
 parent_convo.after("<%= escape_javascript(render(@conversation) )%>"); 
 
