@@ -24,82 +24,16 @@
 	</div>
 	<div class="posts_frame">
 
-		<%= render 'stats' %>
-
+		<%= render 'projects/dashboard/index' %>
+		<%= render 'projects/dashboard/team' %>
+		<%= render 'projects/dashboard/tickets' %>
+		<%= render 'projects/dashboard/calendar' %>
+		<%= render 'projects/dashboard/stats' %>
 		
-		<div class="protected_post" id="team"><div class="postInnerFrame"><div class="protected_post_bg"></div>
-				<div class="protected_post_header"><div class="protected_post_header_bg"></div>
-					<div class="protected_post_label">team</div>
-					<div class="post_timestamp"></div>
-				</div>
-				<div class="post_content_frame">
-					<div class="protected_post_content">
-						<% if @project.users.any? %>
-				      <% @project.users.each do |user| %>
-								<%= link_to user.firstname.downcase + "." + user.lastname.downcase , user_path(user) %><br>
-							<% end %>
-				    <% end %>
-
-					</div>
-				</div>
-				<div class="protected_post_footer"><div class="post_footer_label">
-					<%= pluralize(@project.users.count, "person") %>
-				</div></div>
-			</div>
-		</div>
-
-		<div class="protected_post" id="console"><div class="postInnerFrame"><div class="protected_post_bg"></div>
-				<div class="protected_post_header"><div class="protected_post_header_bg"></div>
-					<div class="protected_post_label">console</div>
-					<div class="post_timestamp"></div>
-				</div>
-				<div class="post_content_frame">
-					<div class="protected_post_content">
-						github: coz.git</br>
-						blog: cozblog.com</br>
-						birthday: 12.12.12</br>
-						mascot: cin
-					</div>
-				</div>
-				<div class="protected_post_footer"><div class="post_footer_label">4 wikis</div></div>
-			</div>
-		</div>
-
-		<div class="protected_post" id="tickets"><div class="postInnerFrame"><div class="protected_post_bg"></div>
-				<div class="protected_post_header"><div class="protected_post_header_bg"></div>
-					<div class="protected_post_label">tickets</div>
-					<div class="post_timestamp"></div>
-				</div>
-				<div class="post_content_frame">
-					<div class="protected_post_content">development: 3</br>branding: 2</br>marketing: 2</div>
-				</div>
-				<div class="protected_post_footer"><div class="post_footer_label">7 tasks</div></div>
-			</div>
-		</div>
-		
-		<div class="protected_post" id="tickets"><div class="postInnerFrame"><div class="protected_post_bg"></div>
-				<div class="protected_post_header"><div class="protected_post_header_bg"></div>
-					<div class="protected_post_label">resources</div>
-					<div class="post_timestamp"></div>
-				</div>
-				<div class="post_content_frame">
-					<div class="protected_post_content">
-						knowledge</br>
-						network</br>
-						labor</br>
-						funds</br>
-					</div>
-				</div>
-				<div class="protected_post_footer"><div class="post_footer_label">12 valuations</div></div>
-			</div>
-		</div>
-		
-
-
-		<%= render 'shared/conversation_form', conversationable: @project %>
+		<div class="arrow-up-frame arrow"></div>
+		<div class="arrow-up-body arrow"></div>
 	</div>
 	
 	
 	<div class="conversation_frame"></div>
 </div>
-

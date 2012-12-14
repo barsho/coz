@@ -1,0 +1,38 @@
+
+
+<div class="protected_post" id="pp4" title="calendar" index="4"><div class="postInnerFrame"><div class="protected_post_bg"></div>
+		<div class="protected_post_header"><div class="protected_post_header_bg"></div>
+			<div class="protected_post_label">calendar</div>
+			<div class="post_timestamp"></div>
+		</div>
+		<div class="post_content_frame">
+			<div class="protected_post_content">
+				<% @age = ((Time.now - @project.created_at).to_f / (24 * 60 * 60)) %>
+
+				since:
+				<%if @age > 365.25 %>
+					<%= (@age/365.25).round(0).to_s() + "y" %>
+				<%elsif @age > 30.5 %>
+						<%= (@age/30.5).round(0).to_s() + "m" %> %>
+				<%elsif @age > 7 %>
+					<%= (@age/7).round(0).to_s() + "w" %> %>
+				<%elsif @age > 1 %>
+					<%= @age.round(0).to_s() + "d" %>
+				<%elsif @age > 1/24 %>
+					<%= (@age*(24)).round(0).to_s() + "h" %>
+				<%else %> 
+					<%= "N/A"%>
+				<%end %></br>
+
+			</div>
+		</div>
+		
+		<%= link_to show_protected_conversation_path(@project.conversations[3]) , 
+		 						{ :remote => true, :method => :get, :class=>'get_post' } do %>
+			<div class="protected_post_footer"><div class="post_footer_label">
+				<%= pluralize(@project.conversations[3].posts.count, "logs") %>
+			</div></div>
+		<% end %>
+		
+	</div>
+</div>

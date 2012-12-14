@@ -16,6 +16,7 @@ class PostsController < ApplicationController
       @post.conversation = @conversation
 
       if @post.save
+        @post.create_child_conversation( title: @post.content)
         if @project.users.include?(current_user) == false
           @project.users << current_user
         end 
@@ -33,6 +34,7 @@ class PostsController < ApplicationController
       @master = get_master(@conversation) 
 
       if @post.save
+        @post.create_child_conversation( title: @post.content)
         if @master.users.include?(current_user) == false
          @master.users << current_user
        end
@@ -49,7 +51,28 @@ class PostsController < ApplicationController
     end
   end
 
+  def move
 
+    @drag_post = Post.find_by_id(params[:id])
+    @drag_post_conversation = @drag_post.conversation
+    
+    @drop_conversation = Conversation.find_by_id(params[:drop_id])
+    
+
+
+
+    @drop_conversation.posts << @drag_post
+    @drop_conversation.save
+    
+    @drag_post.conversation = @drop_conversation
+    @drag_post.save
+
+    respond_to do |format|
+      format.js   
+    end
+
+    
+  end
   
   private
 

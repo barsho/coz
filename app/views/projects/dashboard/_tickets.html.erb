@@ -1,0 +1,20 @@
+<div class="protected_post" id="pp3" title="tickets" index="3"><div class="postInnerFrame"><div class="protected_post_bg"></div>
+		<div class="protected_post_header"><div class="protected_post_header_bg"></div>
+			<div class="protected_post_label">tickets</div>
+			<div class="post_timestamp"></div>
+		</div>
+		<div class="post_content_frame">
+			<div class="protected_post_content">
+			
+			</div>
+		</div>
+		
+		<%= link_to show_protected_conversation_path(@project.conversations[2]) , 
+		 						{ :remote => true, :method => :get, :class=>'get_post' } do %>
+			<div class="protected_post_footer"><div class="post_footer_label">
+				<%= pluralize(@project.conversations[2].posts.count, "task") %>
+			</div></div>
+		<% end %>
+		
+	</div>
+</div>

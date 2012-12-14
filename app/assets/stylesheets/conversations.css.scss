@@ -5,10 +5,7 @@
 .info_conversation {
 	
 	position: relative;
-	overflow-x: hidden;
-	overflow-y: hidden;
-	-ms-overflow-y: hidden;
-	white-space: nowrap;
+
 
 	
 	height: 26 * $unit + $border-thickness;
@@ -22,10 +19,7 @@
 .conversation {
 	
 	position: relative;
-	overflow-x: hidden;
-	overflow-y: hidden;
-	-ms-overflow-y: hidden;
-	white-space: nowrap;
+
 
 	
 	height: 26 * $unit + $border-thickness;
@@ -41,10 +35,6 @@
 .conversation_frame {
 	
 	position: absolute;
-	overflow-x: hidden;
-	overflow-y: hidden;
-	-ms-overflow-y: hidden;
-	white-space: nowrap;
 
 	top: 0;
 	bottom: 0;
@@ -54,7 +44,7 @@
 	background-color: transparent;
 
 	border-top: 1px solid #F2F2F2;
-	border-bottom: 1px solid #BCBCBC;
+	border-bottom: 1px solid #DEDEDE;
 	z-index: -1;
 }
 
@@ -70,6 +60,7 @@
 	overflow-y: hidden;
 	-ms-overflow-y: hidden;
 	white-space: nowrap;
+
 
 	top: 4 * $unit + $border-thickness/2;
 	height: 22.5 * $unit;
@@ -100,7 +91,6 @@
 	left: 0;
 	
 
-	z-index: 2;
 	
 	border-bottom: 0px dashed #dedede;
 

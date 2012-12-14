@@ -1,0 +1,65 @@
+<% @conversation = @project.conversations[5] %>
+
+<div class="conversation" id="c<%= @conversation.id %>">
+		<div class="conversation_bg"></div>
+
+		<div class="conversation_header">
+			<div class="conversation_header_bg"></div>
+			<div class="bullet_symbol"><%= @conversation.content_index %></div>
+			<div class="conversation_label" >
+				<%= @conversation.title %>
+			</div>
+		
+			<!--div class="conversation_stat">
+				<%=  pluralize(@conversation.posts.count, "post") %>
+			</div-->
+			<% if @conversation.conversationable_type == "Project" %>
+				<% if current_user?(@conversation.conversationable.users[0]) %>
+					<div class="right_bullet_symbol"></div>
+					<div class="conversation_stat">
+					    <%= link_to "remove", @conversation, method: :delete, :remote => true,
+					                                     data: { confirm: "You sure?" },
+					                                     title: @conversation.title %>
+					</div>
+			  <% end %>
+			<% else %>
+				<% if current_user?(@conversation.conversationable.user) %>
+					<div class="right_bullet_symbol"></div>
+					<div class="conversation_stat">
+					    <%= link_to "remove", conversation, method: :delete, :remote => true,
+					                                     data: { confirm: "You sure?" },
+					                                     title: @conversation.title %>
+					</div>
+			  <% end %>
+			<% end %>
+		
+		</div>
+	
+
+		<div class="posts_frame">
+			<% if @conversation.posts.any? %>
+			    <%= render @conversation.posts %>
+			<% end %>	
+			<%= render 'shared/post_form', conversation: @conversation %>
+		
+			<div class="arrow-up-frame arrow"></div>
+			<div class="arrow-up-body arrow"></div>
+		
+		</div>
+	
+	<div class="conversation_frame"></div>
+</div>
+
+<script>
+	$("#c<%= escape_javascript(@conversation.id.to_s() )%> .post").draggable({
+											containment: "window",
+											helper: "clone",
+											scroll: true,
+											opacity: 0.7,
+											appendTo: "body",
+											cursor: 'move',
+											revert: true,
+											zIndex: 9999,
+											activeClass: "post_during_drag"
+		        });
+</script>

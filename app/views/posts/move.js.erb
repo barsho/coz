@@ -1,38 +1,18 @@
 
-
-var parent_convo = $("#c<%= escape_javascript(@conversation.conversationable.conversation.id.to_s() )%>");
-var parent_convo_children = $("#c<%= escape_javascript(@conversation.conversationable.conversation.id.to_s() )%> .post");
-var parent_convo_siblings = $("#c<%= escape_javascript(@conversation.conversationable.conversation.id.to_s() )%> ~ .conversation:not(:last)");
-
-var parent_post = $("#p<%= escape_javascript(@conversation.conversationable.id.to_s() )%>");
-
-
-parent_convo_children.css("opacity", "0.7");
-parent_post.css("opacity", "1");
-
-parent_convo_siblings.css("display","none");
-
-var left_offset = ( parent_post.attr("index") - 1)* 215 + 100;
-
-parent_convo.find(".arrow").css("left", left_offset ).css("display","block").animate({
-    opacity: 1
-  }, 100, function() {
-    // Animation complete.
-  });
-
-parent_convo.after("<%= escape_javascript(render(@conversation) )%>"); 
-
-var convo = $("#c<%= escape_javascript(@conversation.id.to_s() )%>");
-
-convo.data("realHeight", convo.height() ).css("height","0").animate({
-    height: convo.data("realHeight")
+$("#p<%= escape_javascript(@drag_post.id.to_s() )%>").animate({
+    opacity: 0
   }, 250, function() {
-    // Animation complete.
+    $(this).remove();
   });
 
-posts = convo.find(".post");
-	
-posts.draggable({
+
+var insertLocation = $("#c<%= escape_javascript(@drop_conversation.id.to_s()) %> #new_post_form");
+insertLocation.before("<%= escape_javascript(render(@drag_post) )%>");
+
+var post = $("#p<%= escape_javascript(@drag_post.id.to_s() )%>");
+
+
+post.draggable({
 										containment: "document",
 										helper: "clone",
 										scroll: true,
@@ -43,13 +23,12 @@ posts.draggable({
 										zIndex: 9999,
 										activeClass: "post_during_drag"
 	        })
-	
-posts.droppable({ accept: ".post", 
+
+post.droppable({ accept: ".post", 
 						  activeClass: "expecting_collision",
               over: function() {
                    var child_conversation_path = $(this).find(".get_post").attr("href");
 									 $(this).removeClass('expecting_collision').addClass('during_collision');
-                   var drop_id = $(this).find(".get_post").attr("href").substr(15);									
 									 $.ajax({
 										        url: child_conversation_path,
 										        type: "get",
@@ -76,7 +55,7 @@ posts.droppable({ accept: ".post",
               out: function() {
                       $(this).removeClass('during_collision').addClass('expecting_collision');
               },
- 							drop: function(event, ui) {
+              drop: function(event, ui) {
                       var drag_id = ui.draggable.attr("id").substr(1);
                       var drop_id = $(this).find(".get_post").attr("href").substr(15);
 										$(this).removeClass('during_collision').addClass('expecting_collision');
@@ -107,5 +86,4 @@ posts.droppable({ accept: ".post",
 
               }
 });
-	
-	
+

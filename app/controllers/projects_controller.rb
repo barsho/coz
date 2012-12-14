@@ -13,6 +13,16 @@ class ProjectsController < ApplicationController
     if @project.save
    #   @project.create_info_conversation(title: @project.name)
       @project.users << current_user
+      
+      @project.conversations.create(title: "Index")
+      @project.conversations.create(title: "Team")
+      @project.conversations.create(title: "Tickets")
+      @project.conversations.create(title: "Calendar")
+      @project.conversations.create(title: "Statistics")
+      @project.conversations.create(title: "Whiteboard")
+    
+    
+                  
       flash[:success] = "Project created!"
       redirect_to @project
     else
@@ -28,8 +38,12 @@ class ProjectsController < ApplicationController
     @post = current_user.posts.build if signed_in?
   end
   
+ 
+ 
   def edit
   end
+  
+
   
   def update
     if @project.update_attributes(params[:project])

@@ -17,22 +17,8 @@ class ConversationsController < ApplicationController
         @post = current_user.posts.build if signed_in?
       end
       
-      respond_to do |format|
-        format.js   
-      end
+      render :nothing => true
 
-#    elsif(@type == "User")
-#      @conversationable = User.find(params[:conversation][:conversationable_id])
-#      params[:conversation].delete( :conversationable_id )
-#      params[:conversation].delete( :conversationable_type )
-#      
-#      @conversation = @conversationable.build_conversation(params[:conversation])
-#      if @conversation.save
-#        flash[:success] = "Conversation created!"
-#        redirect_to user_path(@conversationable)
-#      else
-#        redirect_to user_path(@conversationable)
-#      end
     end
     
   
@@ -46,6 +32,16 @@ class ConversationsController < ApplicationController
       format.js   
     end
   end
+  
+  def show_protected
+    @conversation = Conversation.find_by_id(params[:id])
+    @post = current_user.posts.build if signed_in?
+    respond_to do |format|
+      format.js   
+    end
+  end
+
+
 
   def destroy
     if(@conversation.conversationable_type == "Project")

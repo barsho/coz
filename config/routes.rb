@@ -2,10 +2,18 @@ Coz::Application.routes.draw do
 
   resources :projects
   resources :users
-  resources :themes
 
-  resources :conversations, only: [:show, :create, :destroy]
-  resources :posts, only: [:create, :destroy]
+  resources :conversations, only: [:show, :show_protected, :create, :destroy] do
+    member do
+      get 'show_protected'
+    end
+  end
+
+  resources :posts, only: [:create, :move, :destroy] do
+    member do
+      get 'move'
+    end
+  end
 
   resources :sessions, only: [:new, :create, :destroy]
 

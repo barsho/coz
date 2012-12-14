@@ -1,0 +1,33 @@
+<div class="protected_post" id="pp5" title="statistics" index="5"><div class="postInnerFrame"><div class="protected_post_bg"></div>
+		<div class="protected_post_header"><div class="protected_post_header_bg"></div>
+			<div class="protected_post_label">statistics</div>
+			<div class="post_timestamp"></div>
+		</div>
+		<div class="post_content_frame">
+			<div class="protected_post_content">
+				<% @age = ((Time.now - @project.created_at).to_f / (24 * 60 * 60)) %>
+
+
+
+				posts: <%= @project.cumulative_post_count.to_s()%></br>
+				posts/user: <%= (@project.cumulative_post_count.to_f() / @project.users.count.to_f()).round(1) %></br>
+				
+				<%if @age > 1 %>
+					posts/day: <%= (@project.cumulative_post_count.to_f() /  ((Time.now - @project.created_at).to_f / (24 * 60 * 60))).round(1) %></br>
+				<%elsif @age > 1/24 %>
+					posts/hour: <%= (@project.cumulative_post_count.to_f() /  ((Time.now - @project.created_at).to_f / (60 * 60))).round(1) %></br>
+				<%else %> 
+					<%= "N/A"%></br>
+				<%end %>
+			</div>
+		</div>
+		
+		<%= link_to show_protected_conversation_path(@project.conversations[4]) , 
+		 						{ :remote => true, :method => :get, :class=>'get_post' } do %>
+			<div class="protected_post_footer"><div class="post_footer_label">
+				<%= pluralize(@project.conversations[4].posts.count, "measure") %>
+			</div></div>
+		<% end %>
+
+	</div>
+</div>

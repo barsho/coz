@@ -9,7 +9,7 @@ class Conversation < ActiveRecord::Base
   validates :conversationable_id, presence: true
   validates :title, presence: true, length: { maximum: 140 }
   
-  default_scope order: 'conversations.created_at DESC'
+  default_scope order: 'conversations.created_at ASC'
   
   def content_index
     # This is preliminary. See "Following users" for the full implementation.
