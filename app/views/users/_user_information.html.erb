@@ -1,40 +1,72 @@
-<div class="info_conversation" id="u<%= @user.id %>">
+
+<div class="column menu" id="u<%= @user.id %>">
 
 
-	<div class="conversation_header">
+		<div class="menu_button" id="feed_button">
 
-		<div class="bullet_symbol">u<%= @user.id.to_s() %></div>
-
-		<div class="conversation_label" >
-			<%= @user.firstname.downcase.capitalize + " " + @user.lastname.downcase.capitalize %>
-		</div>
-		
-		<% if signed_in? %>
-			<% if current_user?(@user) %>
-				<%= link_to "new project!", newproject_path %>
-
-			<% end %>
-		<% end %>
-	
-
-	</div>
-	<div class="posts_frame">
-			
-			<div class="protected_post" id="picture"><div class="postInnerFrame"><div class="protected_post_bg"></div>
-					<div class="protected_post_header"><div class="protected_post_header_bg"></div>
-						<div class="protected_post_label">picture</div>
-						<div class="post_timestamp"></div>
+			<div class="subheader_button_innerFrame">
+				<div class="subheader_label_container">
+					<div class="subheader_label">
+						<%= @user.firstname.downcase + "." + @user.lastname.downcase %>
 					</div>
-					<div class="post_content_frame">
-						<div class="protected_post_content">
-
-						</div>
+				</div>
+				<div class="subheader_indicator_container">
+ 
+					<div class="subheader_indicator">
+						12
 					</div>
-					<div class="protected_post_footer"><div class="post_footer_label">
-
-					</div></div>
 				</div>
 			</div>
+		</div>
+
+		<div class="menu_button" id="feed_button">
+
+			<div class="subheader_button_innerFrame">
+				<div class="subheader_label_container">
+					<div class="subheader_label">
+						projects
+					</div>
+				</div>
+				<div class="subheader_indicator_container">
+ 
+					<div class="subheader_indicator">
+						5
+					</div>
+				</div>
+			</div>
+		</div>
+
+		<div class="menu_button" id="feed_button">
+
+			<div class="subheader_button_innerFrame">
+				<div class="subheader_label_container">
+					<div class="subheader_label">
+						associates
+					</div>
+				</div>
+				<div class="subheader_indicator_container">
+ 
+					<div class="subheader_indicator">
+						8
+					</div>
+				</div>
+			</div>
+		</div>
+
+
+
+
+</div>
+
+
+<script>
+	$("#feed_button").addClass("active_button");
+</script>
+
+
+<!--
+	<div class="posts_frame">
+			
 
 
 			<div class="protected_post" id="associates"><div class="postInnerFrame"><div class="protected_post_bg"></div>
@@ -109,3 +141,4 @@
 	
 	<div class="conversation_frame"></div>
 </div>
+-->

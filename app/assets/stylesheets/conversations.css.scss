@@ -66,8 +66,8 @@
 	height: 22.5 * $unit;
 	left:0;
 	right: 0;
-	padding-right: $unit * 1.4;
-	padding-left: $unit * 0.4;
+	padding-right: $unit * 1.2;
+	padding-left: $unit * 0.1;
 
 	
 	background-color: transparent;
@@ -220,9 +220,7 @@ form {
 	-moz-border-radius: 0 * $unit;
 	border-radius: 0 * $unit;
 	border-bottom: none;
-	-webkit-box-shadow: 0px 1px 1px 0px #dedede, inset 0px 1px 2px 0px #bbbbbb;
-  -moz-box-shadow: 0px 1px 1px 0px #dedede, inset 0px 1px 2px 0px #bbbbbb;
-  box-shadow: 0px 1px 1px 0px #dedede, inset 0px 1px 2px 0px #bbbbbb;
+
 
 	&:focus {
 

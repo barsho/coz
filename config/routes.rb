@@ -15,12 +15,15 @@ Coz::Application.routes.draw do
     end
   end
 
+  resources :votes, only: [:create] 
+
   resources :sessions, only: [:new, :create, :destroy]
 
-  root :to => 'static_pages#splash'
+  root :to => 'static_pages#home'
 
   match '/newproject',  to: 'projects#new'
 
+  match '/home', to: 'static_pages#home'
   match '/splash', to: 'static_pages#splash'
   match '/signup',  to: 'users#new'
   match '/signin',  to: 'sessions#new'

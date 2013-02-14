@@ -1,0 +1,90 @@
+<%= link_to show_protected_conversation_path(@project.conversations[0]) , 
+ 						{ :remote => true, :method => :get, :class=>'get_post' } do %>
+
+<div class="subheader_button" id="pp1" cid="c<%=@project.conversations[0].id%>" title="archive" index="3">
+	<div class="subheader_bg"></div>
+	<div class="subheader_button_innerFrame">
+		<div class="subheader_label_container">
+			<div class="subheader_label">
+				archive
+			</div>
+		</div>
+		<div class="subheader_indicator_container">
+			<div class="subheader_indicator_bg"></div>
+			<div class="subheader_indicator">
+				<%= @project.conversations[0].posts.count %>
+			</div>
+		</div>
+	</div>
+</div>
+<% end %>
+
+
+
+<script>
+
+	$(function() {
+		$("#pp1").droppable({ accept: ".post", 
+								activeClass: "expecting_collision",
+                over: function() {
+                       $(this).removeClass('expecting_collision').addClass('during_collision');
+											 $.ajax({
+												        url: "<%= escape_javascript(show_protected_conversation_path(@project.conversations[0])) %>",
+												        type: "get",
+												        
+												        // callback handler that will be called on success
+												        success: function(response, textStatus, jqXHR){
+												            // log a message to the console
+												            console.log("over:droppable");
+												        },
+												        // callback handler that will be called on error
+												        error: function(jqXHR, textStatus, errorThrown){
+												            // log the error to the console
+												            console.log(
+												                "The following error occured: "+
+												                textStatus, errorThrown
+												            );
+												        },
+												        complete: function(){
+
+												        }
+												    });
+
+                },
+                out: function() {
+                        $(this).removeClass('during_collision').addClass('expecting_collision');
+                },
+                drop: function(event, ui) {
+                        var drag_id = ui.draggable.attr("id").substr(1);
+                        var drop_id = $(this).attr("cid").substr(1);
+												$(this).removeClass('during_collision').addClass('expecting_collision');
+
+
+
+											 $.ajax({
+												        url: "/posts/" + drag_id + "/move",
+												        type: "get",
+																data: {drop_id: drop_id},
+												        // callback handler that will be called on success
+												        success: function(response, textStatus, jqXHR){
+												            // log a message to the console
+												            console.log("drop:droppable");
+												        },
+												        // callback handler that will be called on error
+												        error: function(jqXHR, textStatus, errorThrown){
+												            // log the error to the console
+												            console.log(
+												                "The following error occured: "+
+												                textStatus, errorThrown
+												            );
+												        },
+												        complete: function(){
+
+												        }
+												    });
+
+                }
+		});
+	});
+	
+</script>

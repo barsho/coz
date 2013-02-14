@@ -2,3 +2,15 @@
 // They will automatically be included in application.css.
 // You can use Sass (SCSS) here: http://sass-lang.com/
 @import "variables";
+
+.grid_thumbnail {
+	
+	position: relative;
+	width: 199px;
+	height: 199px;
+	float: left;
+	background-color: #FAFAFA;
+	margin-left: 1px;
+	margin-top: 1px;
+
+}

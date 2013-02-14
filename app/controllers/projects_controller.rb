@@ -36,6 +36,7 @@ class ProjectsController < ApplicationController
     @conversations = @project.feed.paginate(page: params[:page])    
     @conversation = @project.conversations.build if signed_in?
     @post = current_user.posts.build if signed_in?
+    @vote = current_user.votes.build if signed_in?
   end
   
  

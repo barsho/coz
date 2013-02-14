@@ -1,8 +1,9 @@
-<div class="post">
-
-  	<span class="name"><%= link_to project.name, project %></span>
+<div class="grid_thumbnail">
 	
-	  Created <%= time_ago_in_words(project.created_at) %> ago.
+	<%= link_to project.name, project %> </br>
+
+  Created <%= time_ago_in_words(project.created_at) %> ago.
 
 	
 </div>
+

@@ -1,6 +1,6 @@
-var parent_convo = $(".info_conversation");
-var parent_convo_children = $(".info_conversation .protected_post");
-var parent_convo_siblings = $(".info_conversation ~ .conversation:not(:last)");
+var parent_convo = $(".subheader");
+var parent_convo_children = $(".subheader .subheader_button, .subheader_calendar");
+var parent_convo_siblings = $(".subheader ~ .conversation:not(:last)");
 
 
 var parent_post = $("#pp<%= escape_javascript( (1 + @conversation.conversationable.conversations.index(@conversation)).to_s() )%>");

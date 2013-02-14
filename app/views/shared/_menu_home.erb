@@ -1,13 +1,13 @@
 
-<div class="column menu" id="p<%= @project.id %>">
-
-
+	<div class="column menu">
+	
+		<%= link_to(root_path) do %>
 		<div class="menu_button" id="feed_button">
 
 			<div class="subheader_button_innerFrame">
 				<div class="subheader_label_container">
 					<div class="subheader_label">
-						<%= @project.name.downcase%>
+						<%= Time.now.strftime("%d/%m/%y")%> 
 					</div>
 				</div>
 				<div class="subheader_indicator_container">
@@ -18,13 +18,14 @@
 				</div>
 			</div>
 		</div>
-
-		<div class="menu_button" id="feed_button">
-
+		<% end %>
+		
+		<%= link_to(users_path) do %>
+		<div class="menu_button" id="people_button">
 			<div class="subheader_button_innerFrame">
 				<div class="subheader_label_container">
 					<div class="subheader_label">
-						archive
+						people
 					</div>
 				</div>
 				<div class="subheader_indicator_container">
@@ -35,9 +36,27 @@
 				</div>
 			</div>
 		</div>
+		<% end %>
 
-		<div class="menu_button" id="feed_button">
-
+		<%= link_to(projects_path) do %>  
+		<div class="menu_button" id="projects_button">
+			<div class="subheader_button_innerFrame">
+				<div class="subheader_label_container">
+					<div class="subheader_label">
+						projects
+					</div>
+				</div>
+				<div class="subheader_indicator_container">
+ 
+					<div class="subheader_indicator">
+						6
+					</div>
+				</div>
+			</div>
+		</div>
+		<% end %>
+		
+		<div class="menu_button" id="tickets_button">
 			<div class="subheader_button_innerFrame">
 				<div class="subheader_label_container">
 					<div class="subheader_label">
@@ -47,34 +66,12 @@
 				<div class="subheader_indicator_container">
  
 					<div class="subheader_indicator">
-						14
+						132
 					</div>
 				</div>
 			</div>
 		</div>
+		
 
+	</div>
 
-		<div class="menu_button" id="feed_button">
-
-			<div class="subheader_button_innerFrame">
-				<div class="subheader_label_container">
-					<div class="subheader_label">
-						team
-					</div>
-				</div>
-				<div class="subheader_indicator_container">
- 
-					<div class="subheader_indicator">
-						14
-					</div>
-				</div>
-			</div>
-		</div>
-
-
-</div>
-
-
-<script>
-	$("#feed_button").addClass("active_button");
-</script>

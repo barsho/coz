@@ -2,11 +2,15 @@
 #
 # Table name: users
 #
-#  id         :integer          not null, primary key
-#  name       :string(255)
-#  email      :string(255)
-#  created_at :datetime         not null
-#  updated_at :datetime         not null
+#  id              :integer          not null, primary key
+#  email           :string(255)
+#  created_at      :datetime         not null
+#  updated_at      :datetime         not null
+#  password_digest :string(255)
+#  firstname       :string(255)
+#  lastname        :string(255)
+#  remember_token  :string(255)
+#  admin           :boolean          default(FALSE)
 #
 
 class User < ActiveRecord::Base
@@ -17,6 +21,8 @@ class User < ActiveRecord::Base
   has_many :conversations, :through => :posts 
   has_many :users, :through => :projects 
   has_many :initiatives, :class_name => 'Project', :foreign_key => "creator_id"
+
+  has_many :votes
     
   before_save { |user| user.email = email.downcase }
   before_save :create_remember_token

@@ -1,0 +1,115 @@
+<div class="post_vote_container">
+
+	<div class="post_vote_up_container">
+
+		<%= link_to votes_path(@vote, :value => 3, :post_id => post.id), :method => :post, :remote=>true, :class=>'post_vote' do %>
+			<div class="post_vote_up_triangle_frame">				
+				<div class="post_vote_up_triangle_back"></div>
+				<div class="post_vote_up_triangle_front"></div>
+			</div>
+		<% end %>
+
+		<%= link_to votes_path(@vote, :value => 2, :post_id => post.id), :method => :post, :remote=>true, :class=>'post_vote' do %>
+			<div class="post_vote_up_triangle_frame">				
+				<div class="post_vote_up_triangle_back"></div>
+				<div class="post_vote_up_triangle_front"></div>
+			</div>
+		<% end %>
+		<%= link_to votes_path(@vote, :value => 1, :post_id => post.id), :method => :post, :remote=>true, :class=>'post_vote' do %>
+			<div class="post_vote_up_triangle_frame">				
+				<div class="post_vote_up_triangle_back"></div>
+				<div class="post_vote_up_triangle_front"></div>
+			</div>
+		<% end %>
+
+	</div>
+	
+	<div class="post_vote_down_container">
+	
+		<%= link_to votes_path(@vote, :value => -3, :post_id => post.id), :method => :post, :remote=>true, :class=>'post_vote' do %>
+			<div class="post_vote_down_triangle_frame">				
+				<div class="post_vote_down_triangle_back"></div>
+				<div class="post_vote_down_triangle_front"></div>
+			</div>				
+		<% end %>
+		
+		<%= link_to votes_path(@vote, :value => -2, :post_id => post.id), :method => :post, :remote=>true, :class=>'post_vote' do %>
+			<div class="post_vote_down_triangle_frame">				
+				<div class="post_vote_down_triangle_back"></div>
+				<div class="post_vote_down_triangle_front"></div>
+			</div>				
+		<% end %>
+		
+		<%= link_to votes_path(@vote, :value => -1, :post_id => post.id), :method => :post, :remote=>true, :class=>'post_vote' do %>
+			<div class="post_vote_down_triangle_frame">				
+				<div class="post_vote_down_triangle_back"></div>
+				<div class="post_vote_down_triangle_front"></div>
+			</div>				
+		<% end %>
+
+	</div>
+
+	
+	<div class="post_vote_indicator_container"><div class="post_vote_indicator">
+		<%= post.votes.count() %>
+	</div></div>
+	
+</div>
+
+<script>
+
+var distribution = <%= post.vote_distribution %>;
+var vote_count = <%= post.votes.count() %>;
+var up_arrows = $("#p<%= escape_javascript( post.id.to_s() )%>").find(".post_vote_up_triangle_front");		
+var down_arrows = $("#p<%= escape_javascript( post.id.to_s() )%>").find(".post_vote_down_triangle_front");		
+
+var up_indicators = $("#p<%= escape_javascript( post.id.to_s() )%>").find(".post_vote_up_triangle_back");		
+var down_indicators = $("#p<%= escape_javascript( post.id.to_s() )%>").find(".post_vote_down_triangle_back");		
+
+
+var count = 0;
+
+up_arrows.each( function()
+	{
+		$(this).css("border-color", "rgb(" + Math.floor(245 + (10 * ( distribution[count] / vote_count ))).toString() + "," + Math.floor(245 + (10 * ( distribution[count] / vote_count ))).toString() + "," + Math.floor(162 + (50 * ( distribution[count] / vote_count ))).toString() + ") transparent");
+		count += 1;
+	}
+);
+
+down_arrows.each( function()
+	{
+		$(this).css("border-color", "rgb(" + Math.floor(247 + (6 * ( distribution[8-count] / vote_count ))).toString() + "," + Math.floor(247 + (6 * ( distribution[8-count] / vote_count ))).toString() + "," + Math.floor(164 + (50 * ( distribution[8-count] / vote_count ))).toString() + ") transparent");
+		count += 1;
+	
+
+	}
+
+);
+
+var userVote = 0;
+<% @userVote = current_user_voted?(post) %>
+<% if @userVote != false %>
+ userVote = <%= @userVote.value %>;
+<% end %>
+if (userVote != 0) {
+	if(userVote == 3) {
+		up_indicators.eq(0).css("border-color", "#BABA88 transparent");		
+	}
+	else if(userVote == 2) {
+		up_indicators.eq(1).css("border-color", "#BABA88 transparent");		
+	}
+	else if(userVote == 1) {
+		up_indicators.eq(2).css("border-color", "#BABA88 transparent");		
+	}
+	else if(userVote == -1) {
+		down_indicators.eq(2).css("border-color", "#BABA88 transparent");		
+	}
+	else if(userVote == -2) {
+	  down_indicators.eq(1).css("border-color", "#BABA88 transparent");		
+	}
+	else if(userVote == -3) {
+		down_indicators.eq(0).css("border-color", "#BABA88 transparent");		
+	}
+	
+}
+</script>

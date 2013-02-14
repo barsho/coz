@@ -1,12 +1,27 @@
 <% provide(:title, 'people') %>
-<h1>All users</h1>
+<div id="gridFrame">
+	
+	<%= render "shared/menu_home" %> 
 
-<%= will_paginate %>
+	<div class="grid_list">
 
-<ul class="users">
-  <% @users.each do |user| %>
-    <%= render user %>
-  <% end %>
-</ul>
+		<%= will_paginate %>
 
-<%= will_paginate %>
+
+		  <% @users.each do |user| %>
+		    <%= render user %>
+		  <% end %>
+		
+
+		<%= will_paginate %>	
+	</div>
+	
+
+</div>
+
+<script>
+	$("#people_button").addClass("active_button");
+</script>
+
+
+

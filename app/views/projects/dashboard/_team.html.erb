@@ -1,26 +1,22 @@
-<div class="protected_post" id="pp2" title="team" index="2"><div class="postInnerFrame"><div class="protected_post_bg"></div>
-		<div class="protected_post_header"><div class="protected_post_header_bg"></div>
-			<div class="protected_post_label">team</div>
-			<div class="post_timestamp"></div>
-		</div>
-		<div class="post_content_frame">
-			<div class="protected_post_content">
-				<% if @project.users.any? %>
-		      <% @project.users.each do |user| %>
-						<%= link_to user.firstname.downcase + "." + user.lastname.downcase , user_path(user) %><br>
-					<% end %>
-		    <% end %>
+<%= link_to show_protected_conversation_path(@project.conversations[1]) , 
+	 						{ :remote => true, :method => :get, :class=>'get_post' } do %>
 
+<div class="subheader_button" cid="c<%=@project.conversations[1].id%>" id="pp2" title="team" index="2">
+	<div class="subheader_bg"></div>
+	<div class="subheader_button_innerFrame">
+		<div class="subheader_label_container">
+			<div class="subheader_label">
+				team
 			</div>
 		</div>
-		
-		<%= link_to show_protected_conversation_path(@project.conversations[1]) , 
-		 						{ :remote => true, :method => :get, :class=>'get_post' } do %>
-			<div class="protected_post_footer"><div class="post_footer_label">
-				<%= pluralize(@project.users.count, "person") %>
-			</div></div>
-		<% end %>
-		
-		
+		<div class="subheader_indicator_container">
+			<div class="subheader_indicator_bg"></div>
+			<div class="subheader_indicator">
+				<%= @project.users.count %>
+			</div>
+		</div>
 	</div>
 </div>
+<% end %>
+
+

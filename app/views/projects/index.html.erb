@@ -1,12 +1,25 @@
 <% provide(:title, 'projects') %>
-<h1>All projects</h1>
+<div id="gridFrame">
+	
+	<%= render "shared/menu_home" %> 
 
-<%= will_paginate %>
+	<div class="grid_list">
 
-<ul class="projects">
-  <% @projects.each do |project| %>
-    <%= render project %>
-  <% end %>
-</ul>
+		<%= will_paginate %>
+	
+		  <% @projects.each do |project| %>
+		    <%= render project %>
+		  <% end %>
+	
+		<%= will_paginate %>	
+	</div>
+	
 
-<%= will_paginate %>
+</div>
+
+<script>
+	$("#projects_button").addClass("active_button");
+</script>
+
+
+

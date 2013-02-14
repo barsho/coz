@@ -5,15 +5,13 @@
 	display: inline-block;
 	white-space: normal;
 	
-	margin-top: 0.5 * $unit - 1;
-	margin-bottom: 1 * $unit - 1;
-	margin-left: 1 * $unit;
-	margin-right: 0 * $unit ;
+	margin-bottom: 0 * $border-thickness;
+
 	
-	height: 20 * $unit;
-	width: 20 * $unit;
-	max-height: 20 * $unit;
-	max-width: 20 * $unit;
+	height: 20 * $unit - 2*$border-thickness;
+	width: 20 * $unit - 3*$border-thickness; 
+	max-height: 20 * $unit - 2*$border-thickness;
+	max-width: 20 * $unit - 3*$border-thickness;
 
 	border: 1px solid #BBBBBB;
 	
@@ -23,10 +21,7 @@
 	}
 	
 	cursor: move;
-	
-	box-shadow: 0px $unit/3 $unit*1.1 rgba(10, 10, 10, 0.30);
-    -moz-box-shadow: 0px $unit/3 $unit*1.1 rgba(10, 10, 10, 0.30);
-    -webkit-box-shadow: 0px $unit/3 $unit*1.1 rgba(10, 10, 10, 0.30);
+
 	
 }
 
@@ -235,8 +230,9 @@
 
 .post_content_frame {
 	position: relative;
-	width: 100%;
+	width: 17 * $unit;
 	height: 14 * $unit - 2;
+	float: left;
 }
 
 .new_post_content_frame {
@@ -316,15 +312,203 @@
 
 }
 
+.post_vote_container {
+
+	position: relative;
+	width: 3 * $unit ;
+	height: 14 * $unit - 2;
+	float: left;
+	&:hover{
+		.post_vote_indicator_container{
+
+			border-top: none;
+			border-bottom: none;
+		}
+		background-color: #f0ef9d;
+	}
+	cursor: pointer;
+}
+
+.post_vote_up_container {
+	
+	position: relative;
+	width: 100%;
+	height: ((14 * $unit - 2) / 2) - 1.5*$unit;
+	text-align: middle;
+	padding-bottom: 1.5*$unit;
+
+}
+
+.post_vote_up{
+	
+	position: absolute; 
+	top: 0;
+	bottom: 0;	
+	left: 0;
+	right: 0;
+	margin: auto;
+
+	height: 2 * $unit;
+	width: 2 * $unit;
+}
+
+.post_vote_up_triangle_frame{
+	
+	position: relative; 
+	height: $unit*1.5 + 1;
+	width: 100%;
+	margin-top: 2px;
+	margin-bottom: 0;
+
+}
+
+.post_vote_up_triangle_front{
+	
+	position: absolute;
+	top: 1px; 
+	border-color: #F6F6A2 transparent;
+	border-style: solid;
+	border-width: 0px $unit*1.5 $unit*1.5 $unit*1.5;
+	height: 0px;
+	width: 0px;	
+}
+
+.post_vote_up_triangle_back{
+	
+	position: absolute;
+	top: 0; 
+	border-color: #EAEA9A transparent;
+	border-style: solid;
+	border-width: 0px $unit*1.5 $unit*1.5 $unit*1.5;
+	height: 0px;
+	width: 0px;	
+}
+
+.post_vote_down_container {
+	position: relative;
+	width: 100%;
+	height: ((14 * $unit - 2) / 2 ) -1.5*$unit;
+	text-align: middle;
+	padding-bottom: 1.5*$unit - 4;
+	
+ -webkit-transform:rotate(180deg);
+}
+
+.post_vote_down {
+	
+	position: absolute; 
+	top: 0;
+	bottom: 0;	
+	left: 0;
+	right: 0;
+	margin: auto;
+	
+	height: 2 * $unit;
+	width: 2 * $unit;
+
+
+}
+
+
+.post_vote_down_triangle_frame{
+	
+	position: relative; 
+	height: $unit*1.5 + 1;
+	width: 100%;
+	margin-top: 2px;
+	margin-bottom: 0;
+		
+	
+}
+
+.post_vote_down_triangle_front{
+	
+	position: absolute;
+	top: 1px; 
+	border-color: #F7F7A4 transparent;
+	border-style: solid;
+	border-width: 0px $unit*1.5 $unit*1.5 $unit*1.5;
+	height: 0px;
+	width: 0px;	
+}
+
+.post_vote_down_triangle_back{
+	
+	position: absolute;
+	top: 0; 
+	border-color: #EAEA9A transparent;
+	border-style: solid;
+	border-width: 0px $unit*1.5 $unit*1.5 $unit*1.5;
+	height: 0px;
+	width: 0px;	
+}
+
+a {
+	
+	&:hover{
+		.post_vote_down_triangle_front{
+			border-color: #FEFED4 transparent !important;
+		}
+		~ a{
+			.post_vote_down_triangle_front{
+				border-color: #FEFED4 transparent !important;
+			}
+			
+		} 
+	}
+	
+	&:hover{
+		.post_vote_up_triangle_front{
+			border-color: #FEFED4 transparent !important;
+		}
+		~ a{
+			.post_vote_up_triangle_front{
+				border-color: #FEFED4 transparent !important;
+			}
+			
+		} 
+	}
+}
+
+.post_vote_indicator_container {
+	
+	position: absolute;
+	width: 3 * $unit - 2 ;
+	height: 3 * $unit - 2;
+	top: 0;
+	bottom: 0;
+	margin-top: auto;
+	margin-bottom: auto;	
+	border-top: 1px solid #EDED9D;
+	border-bottom: 1px solid #EDED9D;
+	border-left: 1px solid #EDED9D;
+	border-right: 1px solid #EDED9D;
+	background-color: #FDFDAD;
+	text-align: center;		
+	z-index: 5;
+	cursor: move;
+
+}
+
+.post_vote_indicator {
+
+	position: relative; 
+	padding-top: $unit/2;
+	padding-bottom: 3px;
+	height: 2 * $unit;
+
+	color: #787878;
+}
+
 
 .post_footer {
-
+	clear: left;
 	position: relative; 
 	width: 100%;
 	height: 3 * $unit;
-	border-top: 2px dashed #EDED9D; 
+	border-top: 1px solid #EDED9D; 
 	&:hover{
-		border-top: 2px dashed #1a1a1a;
+		border-top: 1px solid #CBCB7B;
 		.post_footer_label {
 		color: #1a1a1a;
 		text-decoration: underline;}

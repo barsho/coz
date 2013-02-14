@@ -1,3 +1,15 @@
+# == Schema Information
+#
+# Table name: conversations
+#
+#  id                    :integer          not null, primary key
+#  title                 :string(255)
+#  conversationable_id   :integer
+#  conversationable_type :string(255)
+#  created_at            :datetime         not null
+#  updated_at            :datetime         not null
+#
+
 require 'spec_helper'
 
 describe Conversation do

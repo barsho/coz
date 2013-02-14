@@ -16,6 +16,7 @@ class PostsController < ApplicationController
       @post.conversation = @conversation
 
       if @post.save
+        @post.type = 0
         @post.create_child_conversation( title: @post.content)
         if @project.users.include?(current_user) == false
           @project.users << current_user
