@@ -2,7 +2,7 @@
 
 var parent_convo = $("#c<%= escape_javascript(@conversation.conversationable.conversation.id.to_s() )%>");
 var parent_convo_children = $("#c<%= escape_javascript(@conversation.conversationable.conversation.id.to_s() )%> .post");
-var parent_convo_siblings = $("#c<%= escape_javascript(@conversation.conversationable.conversation.id.to_s() )%> ~ .conversation:not(:last)");
+var parent_convo_siblings = $("#c<%= escape_javascript(@conversation.conversationable.conversation.id.to_s() )%> ~ .column");
 
 var parent_post = $("#p<%= escape_javascript(@conversation.conversationable.id.to_s() )%>");
 
@@ -10,22 +10,52 @@ var parent_post = $("#p<%= escape_javascript(@conversation.conversationable.id.t
 parent_convo_children.css("opacity", "0.7");
 parent_post.css("opacity", "1");
 
-parent_convo_siblings.css("display","none");
 
-var left_offset = ( parent_post.attr("index") - 1)* 215 + 100;
+// var left_offset = ( parent_post.attr("index") - 1)* 215 + 100;
 
-parent_convo.find(".arrow").css("left", left_offset ).css("display","block").animate({
+/* parent_convo.find(".arrow").css("left", left_offset ).css("display","block").animate({
     opacity: 1
   }, 100, function() {
     // Animation complete.
   });
-
+*/
 parent_convo.after("<%= escape_javascript(render(@conversation) )%>"); 
 
 var convo = $("#c<%= escape_javascript(@conversation.id.to_s() )%>");
 
-convo.data("realHeight", convo.height() ).css("height","0").animate({
-    height: convo.data("realHeight")
+if (parent_convo.hasClass("protected")) {
+	var protectedFrame = $("#protectedFrame");
+	var feedFrame = $("#feedFrame");
+
+
+	var dWidth = 200 - parent_convo_siblings.length * 200;
+
+	var pF_width_buffer = protectedFrame.css("width");
+	var pF_width = pF_width_buffer.slice(0,pF_width_buffer.length-2);
+	var fF_offset = feedFrame.css("left");
+
+	var borderLocation = parseInt(pF_width) + parseInt(dWidth);
+
+
+	parent_convo_siblings.remove();
+	protectedFrame.animate({ width: borderLocation }, 250, function() {
+	  // Animation complete.
+	});
+
+	feedFrame.animate({ left: borderLocation }, 250, function() {
+	  // Animation complete.
+	});
+
+	convo.addClass("protected");	
+}
+if (parent_convo.hasClass("feed")) {
+	convo.addClass("feed");	
+	
+	parent_convo_siblings.remove();
+}
+
+convo.data("realWidth", convo.width() ).css("width","0").animate({
+    width: convo.data("realWidth")
   }, 250, function() {
     // Animation complete.
   });

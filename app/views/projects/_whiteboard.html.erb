@@ -1,26 +1,30 @@
 <% @conversation = @project.conversations[5] %>
-<div class="column" id="c<%= @conversation.id %>">
+<div id="feedFrame">
 
-			<%= render 'shared/post_form', conversation: @conversation %>
+	<div class="column feed" id="c<%= @conversation.id %>">
+	<div class="column_innerframe">
+				<%= render 'shared/post_form', conversation: @conversation %>
 
-			<% if @conversation.posts.any? %>
-			    <%= render @conversation.posts %>
-			<% end %>	
+				<% if @conversation.posts.any? %>
+				    <%= render @conversation.posts %>
+				<% end %>	
 	
 		
-		</div>
+			</div>
 
-<script>
-	$("#c<%= escape_javascript(@conversation.id.to_s() )%> .post").draggable({
-											containment: "window",
-											helper: "clone",
-											scroll: true,
-											opacity: 0.7,
-											appendTo: "body",
-											cursor: 'move',
-											revert: true,
-											zIndex: 9999,
-											activeClass: "post_during_drag"
-		        });
-</script>
+	<script>
+		$("#c<%= escape_javascript(@conversation.id.to_s() )%> .post").draggable({
+												containment: "window",
+												helper: "clone",
+												scroll: true,
+												opacity: 0.7,
+												appendTo: "body",
+												cursor: 'move',
+												revert: true,
+												zIndex: 9999,
+												activeClass: "post_during_drag"
+			        });
+	</script>
+	</div>
+	</div>
 </div>

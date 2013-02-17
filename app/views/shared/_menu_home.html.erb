@@ -1,0 +1,79 @@
+
+
+	<div class="column menu">
+	
+		<%= link_to(root_path) do %>
+		<div class="menu_button" id="pp0" index="0">
+
+			<div class="subheader_button_innerFrame">
+				<div class="subheader_label_container">
+					<div class="subheader_date_label">
+						<%= Time.now.strftime("%d/%m/%y")%> 
+					</div>
+				</div>
+				<div class="subheader_indicator_container">
+ 
+					<div class="subheader_indicator">
+						14
+					</div>
+				</div>
+			</div>
+		</div>
+		<% end %>
+		
+		<%= link_to(users_path) do %>
+		<div class="menu_button" id="pp1" index="1">
+			<div class="subheader_button_innerFrame">
+				<div class="subheader_label_container">
+					<div class="subheader_label">
+						people
+					</div>
+				</div>
+				<div class="subheader_indicator_container">
+ 
+					<div class="subheader_indicator">
+						14
+					</div>
+				</div>
+			</div>
+		</div>
+		<% end %>
+
+		<%= link_to(projects_path) do %>  
+		<div class="menu_button" id="pp2" index="2">
+			<div class="subheader_button_innerFrame">
+				<div class="subheader_label_container">
+					<div class="subheader_label">
+						projects
+					</div>
+				</div>
+				<div class="subheader_indicator_container">
+ 
+					<div class="subheader_indicator">
+						6
+					</div>
+				</div>
+			</div>
+		</div>
+		<% end %>
+		
+		<div class="menu_button" id="pp3" index="3">
+			<div class="subheader_button_innerFrame">
+				<div class="subheader_label_container">
+					<div class="subheader_label">
+						tickets
+					</div>
+				</div>
+				<div class="subheader_indicator_container">
+ 
+					<div class="subheader_indicator">
+						132
+					</div>
+				</div>
+			</div>
+		</div>
+		
+
+	</div>
+</div>
+

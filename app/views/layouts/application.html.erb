@@ -6,7 +6,7 @@
   <%= javascript_include_tag "application" %>
   <%= csrf_meta_tags %>
 	<%= render 'layouts/shim'%>
-	<script src="jquery.ui.touch-punch.min.js"></script>
+
 </head>
 <body>
 
@@ -20,15 +20,14 @@
 			<%= render 'layouts/header'%>
 		<% end %>
 	
-
+		
 			<% flash.each do |key, value| %>
 				<div class="alert alert-<%= key %>"><%= value %></div>
 			<% end %>
       <%= yield %>
 
 	 <!--	<%= render 'layouts/footer'%> -->
-	
-	
+
 </body>
 </html>
 

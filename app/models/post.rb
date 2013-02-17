@@ -24,7 +24,7 @@ class Post < ActiveRecord::Base
   validates :content, presence: true, length: { maximum: 140 }
 
 
-  default_scope order: 'posts.created_at ASC'  
+  default_scope order: 'posts.created_at DESC'  
   
   def cumulative_post_count
     # This is preliminary. See "Following users" for the full implementation.

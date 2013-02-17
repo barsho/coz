@@ -1,22 +1,13 @@
-<div class="conversation" id="c<%= conversation.id %>">
+<div class="column" id="c<%= conversation.id %>">
+<div class="column_innerframe">
+
+
 	
 
 	
 
 
-		<div class="conversation_bg"></div>
-
-
-		<div class="conversation_header">
-			<div class="conversation_header_bg"></div>
-			<div class="bullet_symbol"><%= conversation.content_index %></div>
-			<div class="conversation_label" >
-				<%= conversation.title %>
-			</div>
-		
-			<!--div class="conversation_stat">
-				<%=  pluralize(conversation.posts.count, "post") %>
-			</div-->
+	<!--
 			<% if conversation.conversationable_type == "Project" %>
 				<% if current_user?(conversation.conversationable.users[0]) %>
 					<div class="right_bullet_symbol"></div>
@@ -39,18 +30,14 @@
 		
 		</div>
 	
+	-->
+			<%= render 'shared/post_form', conversation: conversation %>
 
-		<div class="posts_frame">
 			<% if conversation.posts.any? %>
 			    <%= render conversation.posts %>
 			<% end %>	
-			<%= render 'shared/post_form', conversation: conversation %>
 		
-			<div class="arrow-up-frame arrow"></div>
-			<div class="arrow-up-body arrow"></div>
-		
-		</div>
-	
-	<div class="conversation_frame"></div>
+</div>
+			
 </div>
 

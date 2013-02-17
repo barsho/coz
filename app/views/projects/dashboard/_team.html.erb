@@ -1,8 +1,9 @@
 <%= link_to show_protected_conversation_path(@project.conversations[1]) , 
 	 						{ :remote => true, :method => :get, :class=>'get_post' } do %>
 
-<div class="subheader_button" cid="c<%=@project.conversations[1].id%>" id="pp2" title="team" index="2">
-	<div class="subheader_bg"></div>
+
+<div class="menu_button" cid="c<%=@project.conversations[1].id%>" id="pp1" title="team" index="3">
+
 	<div class="subheader_button_innerFrame">
 		<div class="subheader_label_container">
 			<div class="subheader_label">
@@ -10,7 +11,7 @@
 			</div>
 		</div>
 		<div class="subheader_indicator_container">
-			<div class="subheader_indicator_bg"></div>
+
 			<div class="subheader_indicator">
 				<%= @project.users.count %>
 			</div>

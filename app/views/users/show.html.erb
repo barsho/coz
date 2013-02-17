@@ -8,11 +8,10 @@
 
 			<%= render 'user_information' %>
 
-			<div class="column">
+			<div class="grid_list">
 
 			<% if @user.posts.any? %>
-	      <%= will_paginate @posts %>
-				
+	   		
 	      <%= render @posts %>
 	      
 	    <% end %>

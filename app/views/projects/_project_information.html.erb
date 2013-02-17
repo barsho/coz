@@ -1,80 +1,9 @@
-
-<div class="column menu" id="p<%= @project.id %>">
-
-
-		<div class="menu_button" id="feed_button">
-
-			<div class="subheader_button_innerFrame">
-				<div class="subheader_label_container">
-					<div class="subheader_label">
-						<%= @project.name.downcase%>
-					</div>
-				</div>
-				<div class="subheader_indicator_container">
- 
-					<div class="subheader_indicator">
-						14
-					</div>
-				</div>
-			</div>
-		</div>
-
-		<div class="menu_button" id="feed_button">
-
-			<div class="subheader_button_innerFrame">
-				<div class="subheader_label_container">
-					<div class="subheader_label">
-						archive
-					</div>
-				</div>
-				<div class="subheader_indicator_container">
- 
-					<div class="subheader_indicator">
-						14
-					</div>
-				</div>
-			</div>
-		</div>
-
-		<div class="menu_button" id="feed_button">
-
-			<div class="subheader_button_innerFrame">
-				<div class="subheader_label_container">
-					<div class="subheader_label">
-						tickets
-					</div>
-				</div>
-				<div class="subheader_indicator_container">
- 
-					<div class="subheader_indicator">
-						14
-					</div>
-				</div>
-			</div>
-		</div>
-
-
-		<div class="menu_button" id="feed_button">
-
-			<div class="subheader_button_innerFrame">
-				<div class="subheader_label_container">
-					<div class="subheader_label">
-						team
-					</div>
-				</div>
-				<div class="subheader_indicator_container">
- 
-					<div class="subheader_indicator">
-						14
-					</div>
-				</div>
-			</div>
-		</div>
-
-
+<div id="protectedFrame">
+	<div class="column menu" id="p<%= @project.id %>">
+			<%= render 'projects/dashboard/calendar' %>
+			<%= render 'projects/dashboard/archive' %>
+			<%= render 'projects/dashboard/tickets' %>
+			<%= render 'projects/dashboard/team' %>
+	</div>
 </div>
 
-
-<script>
-	$("#feed_button").addClass("active_button");
-</script>

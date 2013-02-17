@@ -1,4 +1,4 @@
-$("#c<%= escape_javascript(@post.conversation.id.to_s() )%> #new_post_form").before("<%= escape_javascript(render(@post) )%>");
+$("#c<%= escape_javascript(@post.conversation.id.to_s() )%> #new_post_form").after("<%= escape_javascript(render(@post) )%>");
 var post = $("#p<%= escape_javascript(@post.id.to_s() )%>");
 
 

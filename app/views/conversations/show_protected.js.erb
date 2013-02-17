@@ -1,35 +1,48 @@
-var parent_convo = $(".subheader");
-var parent_convo_children = $(".subheader .subheader_button, .subheader_calendar");
-var parent_convo_siblings = $(".subheader ~ .conversation:not(:last)");
+var parent_convo = $(".menu");
+var parent_convo_children = $(".menu .menu_button");
+var parent_convo_siblings = $(".menu ~ .column:not(.feed)");
 
 
-var parent_post = $("#pp<%= escape_javascript( (1 + @conversation.conversationable.conversations.index(@conversation)).to_s() )%>");
 
-
-parent_convo_children.css("opacity", "0.7");
-parent_post.css("opacity", "1");
-
-
-parent_convo_siblings.css("display","none");
-
-
-var left_offset = ( parent_post.attr("index") - 1)* 215 + 100;
-
-parent_convo.find(".arrow").css("opacity","0").css("left", left_offset ).css("display","block").animate({
-    opacity: 1
-  }, 100, function() {
-    // Animation complete.
-  });
+var parent_post = $("#pp<%= escape_javascript( (@conversation.conversationable.conversations.index(@conversation)).to_s() )%>");
 
 parent_convo.after("<%= escape_javascript(render(@conversation) )%>"); 
 
 var convo = $("#c<%= escape_javascript(@conversation.id.to_s() )%>");
 
-convo.data("realHeight", convo.height() ).css("height","0").animate({
-    height: convo.data("realHeight")
+var protectedFrame = $("#protectedFrame");
+var feedFrame = $("#feedFrame");
+
+
+var dWidth = 200 - parent_convo_siblings.length * 200;
+
+var pF_width_buffer = protectedFrame.css("width");
+var pF_width = pF_width_buffer.slice(0,pF_width_buffer.length-2);
+var fF_offset = feedFrame.css("left");
+
+var borderLocation = parseInt(pF_width) + parseInt(dWidth);
+
+
+protectedFrame.animate({ width: borderLocation }, 250, function() {
+  // Animation complete.
+});
+
+feedFrame.animate({ left: borderLocation }, 250, function() {
+  // Animation complete.
+});
+
+convo.addClass("protected");
+
+convo.data("realWidth", convo.width() ).css("width","0").animate({
+    width: convo.data("realWidth")
   }, 250, function() {
     // Animation complete.
   });
+
+$(".menu_button").removeClass("active_button");
+$("#pp<%= escape_javascript( ( @conversation.conversationable.conversations.index(@conversation)).to_s() )%>").addClass("active_button");
+
+parent_convo_siblings.remove();
 
 posts = convo.find(".post");
 
