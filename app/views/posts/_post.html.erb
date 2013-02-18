@@ -1,10 +1,10 @@
 <div class="post" id="p<%= post.id %>" index="<%= post.conversation.posts.index(post) + 1%>">	
 	<div class="postInnerFrame">
-		<div class="post_bg"></div>
+
 
 		
 		<div class="post_header">	
-			<div class="post_header_bg"></div>
+
 			
 	 		<%= link_to post.user do %>
 				<div class="post_label">
@@ -25,7 +25,7 @@
 			<%= post.content %>
 		</div></div>		
 		
-	  <%= render 'posts/vote_container', :post => post %>
+	  <!--<%= render 'posts/vote_container', :post => post %>-->
 
 		<%= link_to post.child_conversation, :method => :get, :remote=>true, :class=>'get_post' do %>
 			<div class="post_footer">
@@ -34,6 +34,8 @@
 				</div>
 			</div>
 		<% end %>
+		
+		
 	</div>
 
 </div>
