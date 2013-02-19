@@ -19,6 +19,7 @@
 	bottom: 0;
 	width: 20 * $unit;
 	left: 0;
+
 	overflow-x: scroll;
 	white-space:nowrap;
 	overflow-y: hidden;
@@ -29,14 +30,25 @@
 	position: absolute;
 	top: 6 * $unit + $border-thickness;
 	bottom: 0;
-	left: 20 * $unit;
+	left: 21 * $unit;
 	right: 0;
 	overflow-y: hidden;
 	overflow-x: scroll;
 	white-space:nowrap;
-	
+	word-spacing: 0;
 }
 
+#feedFrame_dropShadow {
+	
+	position: absolute;
+	width: 100%;
+	height: 2px;
+	pointer-events: none;
+	-moz-box-shadow:    inset 0 1px 1px #ffffff;
+  -webkit-box-shadow: inset 0 1px 1px #ffffff;
+  box-shadow:         inset 0 1px 1px #ffffff;
+	z-index: 8;
+}
 
 .nest_frame {
 
@@ -53,7 +65,7 @@
 .column {
 	display: inline-block;
 	width: 20 * $unit - $border-thickness;
-	overflow-y: scroll;
+	overflow-y: hidden;
 	overflow-x: hidden;
 	height: 100%;
 	line-height: 0;
@@ -64,18 +76,77 @@
 .column_innerframe {
 	position: relative;
 	width: 100%;
-	overflow-y: scroll;
+	overflow-y: hidden;
 	overflow-x: hidden;
 	height: 100%;
 	line-height: 0;
 	white-space: normal;
-	z-index:7;
+
+}
+
+.column_headerframe {
+	position: absolute;
+	top: 0;
+	height: 5 * $unit;
+	width: auto;
+	left: 0;
+	right: $unit - $border-thickness;
+	line-height: normal;
+	white-space: normal;
+	opacity: 0.75;
+	z-index: 2;
+	background-color: #fdfdfd;
+	
+	&:hover{
+		cursor: pointer;
+		.column_header_dateLabel {
+			color: #333333;
+			text-shadow: 0 1px 1px #CCCCCC;
+			text-decoration: underline;}
+		}
+}
+
+.column_header_dateLabel {
+	
+	position: absolute;
+	top: 0;
+	bottom: 0;
+	left: 0;
+	right: 0;
+	margin-top: auto;
+	margin-bottom: auto;
+	height: 20px;
+	width: auto;
+	text-align: center;
+	line-height: normal;
+	white-space: normal;
+	z-index: 3;
+	opacity: 1;
+
+	color: #777777;
+	font-size: 1.4 * $unit;
+	text-shadow: 0 1px 1px #DDDDDD;
+
+
+}
+
+.column_scrollframe {
+	position: absolute;
+	bottom: 0;
+	top: 0;
+	padding-top: 5 * $unit;
+	overflow-y: scroll;
+	overflow-x: hidden;
+	width: 100%;
+	line-height: 0;
+	white-space: normal;
+
 }
 
 .menu {
 	line-height: 100%;
 	position: relative;
-
+	margin-right: $unit;
 	left: 0;
 	height: 100%;
 	float: left;	
