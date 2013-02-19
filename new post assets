@@ -1,0 +1,46 @@
+  <div id="post_generate">
+
+        <div class="new_post">
+
+         <div class="new_project">
+     
+         <div class="task_details">
+
+            <h1>BEBB</h1>
+
+            <h2>Weekly Meeting</h2>
+
+-
+-
+ #search {
+
+   position: absolute;
+
+   width: 142;
+
+   height: 142;
+  
+   background-color: #757575;
+
+   opacity: 1;
+
+   &:hover {
+
+     opacity: 0.5;
+
+   };
+
+ }
+
+<span><img border="0" width="55" height="55" style="display: block;" src="app/assets/images/icon_dev_task.png" />
+            <p class="byline"><a href="#link">Contribute</a></p>
+            
+//            <span><img border="0" width="55" height="55" style="display: block;" src="app/assets/images/icon_creative_task.png" />
+//            <p class="byline"><a href="#link">Contribute</a></p>
+            
+//            <span><img border="0" width="55" height="55" style="display: block;" src="app/assets/images/icon_business_task.png" />
+//            <p class="byline"><a href="#link">Contribute</a></p>
+	
+          </div>
+	
+       </div>
