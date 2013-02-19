@@ -5,18 +5,44 @@
   <%= @user.firstname %> <%= @user.lastname %>
 </h1-->
 <%= render 'user_information' %>
-<div id="gridFrame">
-	
 
-			<div class="grid_list">
+<div id="feedFrame">
+		<div id="feedFrame_dropShadow"></div>
 
-			<% if @user.posts.any? %>
-	   		
-	      <%= render @posts %>
-	      
-	    <% end %>
-	
+		<% if @user.posts.any? %>
+		<% @index_date = @user.posts[0].created_at %>
+
+
+		<div class="column feed" id="u<%= @user.id %>">
+			<div class="column_innerframe">
+				<div class="column_headerframe">
+					<div class="column_header_dateLabel"><%= @index_date.strftime("%B %d")%></div>
+				</div>
+				<div class="column_scrollframe">
+
+		<% @user.posts.each do |post| %>
+
+			<% if post.created_at.strftime("%B %d") != @index_date.strftime("%B %d") %>
+				<%  @index_date = post.created_at %>
+					</div>
+				</div>
+			</div><div class="column feed" id="u<%= @user.id %>">
+				<div class="column_innerframe">
+					<div class="column_headerframe">
+						<div class="column_header_dateLabel"><%= @index_date.strftime("%B %d")%></div>
+					</div>
+					<div class="column_scrollframe">	
+			<% end %>
+
+
+
+						    <%= render post %>
+
+
+
+		<% end %>		
+		<% end %>	
+				</div>
+			</div>
 		</div>
 	</div>
-
-
